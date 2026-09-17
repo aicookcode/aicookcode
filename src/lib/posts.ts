@@ -6,7 +6,8 @@ export async function getPosts() {
   return (await getCollection('blog', ({ data }) => !data.draft && data.pubDate <= new Date()))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
-export const postUrl = (post: Post) => `${site.url}/articles/${post.id}/`;
+export const postPath = (post: Post) => `/articles/${post.id}/`;
+export const postUrl = (post: Post) => `${site.url}${postPath(post)}`;
 export const dateLabel = (date: Date) => new Intl.DateTimeFormat('zh-CN', {
   year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai',
 }).format(date).replaceAll('/', '.');
