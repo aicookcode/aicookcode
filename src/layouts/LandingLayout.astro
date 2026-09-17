@@ -1,0 +1,34 @@
+---
+import { site } from '../config/site';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const { title = site.title, description = site.description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#173c31" />
+    <link rel="canonical" href={site.url} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content={`${site.url}/images/workspace.jpg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="landing-page" id="top">
+    <a class="skip-link" href="#landing-main">Skip to content</a>
+    <header class="landing-header">
+      <a class="landing-brand" href="/" aria-label="AICookCode home"><span class="landing-mark">&lt;/&gt;</span><span>AICookCode<span class="brand-dot">.</span></span></a>
+      <a class="landing-mini-link" href="/articles/">Tech blog <span>↗</span></a>
+    </header>
+    <main id="landing-main"><slot /></main>
+    <footer class="landing-footer"><slot name="footer" /></footer>
+  </body>
+</html>

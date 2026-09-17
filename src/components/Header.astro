@@ -1,0 +1,40 @@
+---
+import { Search, GitFork as Github, Sun, Moon, Menu, X, ArrowUpRight } from '@lucide/astro';
+import Brand from './Brand.astro';
+import { navItems, site } from '../config/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <Brand />
+    <nav class="desktop-nav" aria-label="主导航">
+      {navItems.map(({ href, label }) => <a href={href} class:list={{ active: href === '/' ? path === '/' : path.startsWith(href) }} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>{label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" data-search-open aria-label="搜索文章" title="搜索文章"><Search size={19} /></button>
+      <button class="icon-button theme-toggle" aria-label="切换为深色模式" title="切换显示主题"><Sun class="sun-icon" size={19} /><Moon class="moon-icon" size={19} /></button>
+      <span class="header-separator"></span>
+      <a class="github-link" href={site.githubUrl || 'https://github.com'} target="_blank" rel="noopener noreferrer"><Github size={18} /><span>GitHub</span><ArrowUpRight size={13} /></a>
+      <button class="icon-button menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-nav"><Menu class="menu-open-icon" size={22} /><X class="menu-close-icon" size={22} /></button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav container" aria-label="移动端导航" hidden>
+    {navItems.map(({ href, label }) => <a href={href} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>{label}</a>)}
+  </nav>
+</header>
+<script>
+  const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#mobile-nav');
+  menu?.addEventListener('click', () => {
+    const expanded = menu.getAttribute('aria-expanded') !== 'true';
+    menu.setAttribute('aria-expanded', String(expanded));
+    menu.setAttribute('aria-label', expanded ? '关闭导航' : '打开导航');
+    if (nav) nav.hidden = !expanded;
+  });
+  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+    document.querySelector('.theme-toggle')?.setAttribute('aria-label', next === 'dark' ? '切换为浅色模式' : '切换为深色模式');
+  });
+</script>

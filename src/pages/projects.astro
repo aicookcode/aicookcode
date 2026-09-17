@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ArrowUpRight, CodeXml, BookOpen, GitFork, Terminal, ExternalLink } from '@lucide/astro';
+const projects = [
+  { name: 'Astro', repo: 'withastro/astro', label: '内容网站框架', description: '以内容为中心的 Web 框架。AICookCode 的基础，适合博客、文档和轻量网站。', language: 'TypeScript', color: 'orange', icon: CodeXml, url: 'https://github.com/withastro/astro', docs: 'https://docs.astro.build/zh-cn/' },
+  { name: 'Hono', repo: 'honojs/hono', label: '轻量后端', description: '运行在 Web 标准上的轻量 Web 框架，适合为 AI 应用搭建 API 与边缘服务。', language: 'TypeScript', color: 'green', icon: Terminal, url: 'https://github.com/honojs/hono', docs: 'https://hono.dev/docs/' },
+  { name: 'Pagefind', repo: 'Pagefind/pagefind', label: '静态全文搜索', description: '为静态网站生成搜索索引。当文章规模增长后，可以在浏览器端实现更完整的全文搜索。', language: 'Rust', color: 'violet', icon: BookOpen, url: 'https://github.com/Pagefind/pagefind', docs: 'https://pagefind.app/' },
+  { name: 'GitHub CLI', repo: 'cli/cli', label: '开发者工具', description: '在终端里管理仓库、Issue 和 Pull Request，把常见的协作操作放进自己的工作流。', language: 'Go', color: 'blue', icon: GitFork, url: 'https://github.com/cli/cli', docs: 'https://cli.github.com/manual/' },
+];
+---
+<BaseLayout title="开源项目 · AICookCode" description="值得了解与动手实践的开源项目：Astro、Hono、Pagefind 和 GitHub CLI。"><div class="container archive-page"><header class="page-heading"><span class="eyebrow">THE OPEN SOURCE SHELF</span><h1>好工具，值得一起发现<span class="heading-dot">.</span></h1><p>一份持续整理的开源书架。这里收录的是第三方项目，以及选择它们的理由。</p></header><div class="projects-grid">{projects.map((project) => { const Icon = project.icon; return <article class={`project-card ${project.color}`}><div class="project-top"><span class="topic-icon"><Icon size={27} /></span><span class="project-label">{project.label}</span></div><h2><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}<ArrowUpRight size={20} /></a></h2><span class="repo-name">{project.repo}</span><p>{project.description}</p><div class="project-bottom"><span class="project-language"><span></span>{project.language}</span><a href={project.docs} target="_blank" rel="noopener noreferrer">官方文档<ExternalLink size={14} /></a></div></article>; })}</div><p class="project-footnote">项目归属各自的维护者；收录不代表商业合作或官方推荐。</p></div></BaseLayout>

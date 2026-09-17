@@ -1,0 +1,60 @@
+---
+import { Search, X, ArrowUpRight } from '@lucide/astro';
+---
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-title">
+  <div class="search-dialog-top"><h2 id="search-title">搜索文章</h2><button class="icon-button" data-search-close aria-label="关闭搜索"><X size={20} /></button></div>
+  <div class="search-input-wrap"><Search size={21} /><input id="search-input" type="search" placeholder="搜索文章、标签或关键词…" autocomplete="off" aria-label="搜索关键词" /></div>
+  <p id="search-status" role="status">输入关键词，发现一篇好文章。</p>
+  <div id="search-results" class="search-results"></div>
+  <div class="search-bottom"><span>AICookCode / 站内搜索</span><ArrowUpRight size={15} /></div>
+</dialog>
+<script>
+  type SearchPost = { title: string; description: string; category: string; tags: string[]; url: string; body: string };
+  const dialog = document.querySelector<HTMLDialogElement>('#search-dialog')!;
+  const input = document.querySelector<HTMLInputElement>('#search-input')!;
+  const status = document.querySelector<HTMLElement>('#search-status')!;
+  const results = document.querySelector<HTMLElement>('#search-results')!;
+  let posts: SearchPost[] | null = null;
+  let loading: Promise<SearchPost[]> | null = null;
+  let opener: HTMLElement | null = null;
+  async function search() {
+    results.replaceChildren();
+    const query = input.value.trim().toLocaleLowerCase();
+    if (!query) { status.textContent = '输入关键词，发现一篇好文章。'; return; }
+    status.textContent = '正在搜索…';
+    try {
+      if (!posts) {
+        loading ??= fetch('/search-index.json').then((response) => { if (!response.ok) throw new Error('Search unavailable'); return response.json(); });
+        posts = await loading;
+      }
+      if (input.value.trim().toLocaleLowerCase() !== query) return;
+      const tokens = query.split(/\s+/);
+      const matches = posts!.map((post) => {
+        const text = `${post.title} ${post.description} ${post.category} ${post.tags.join(' ')} ${post.body}`.toLocaleLowerCase();
+        return { post, matched: tokens.every((token) => text.includes(token)), score: tokens.reduce((score, token) => score + (post.title.toLocaleLowerCase().includes(token) ? 3 : post.tags.join(' ').toLocaleLowerCase().includes(token) ? 2 : 1), 0) };
+      }).filter((item) => item.matched).sort((a, b) => b.score - a.score);
+      status.textContent = matches.length ? `找到 ${matches.length} 篇相关文章` : '没有找到相关文章，试试「Astro」「AI」或「GitHub」。';
+      matches.forEach(({ post }) => {
+        const link = document.createElement('a'); link.href = post.url; link.className = 'search-result';
+        const category = document.createElement('span'); category.className = 'eyebrow'; category.textContent = post.category;
+        const title = document.createElement('h3'); title.textContent = post.title;
+        const description = document.createElement('p'); description.textContent = post.description;
+        link.append(category, title, description); results.append(link);
+      });
+    } catch {
+      loading = null;
+      status.textContent = '暂时无法加载搜索，请稍后重试。';
+    }
+  }
+  document.querySelectorAll('[data-search-open]').forEach((button) => button.addEventListener('click', () => {
+    opener = button as HTMLElement; dialog.showModal(); document.body.classList.add('dialog-open'); input.focus();
+  }));
+  document.querySelector('[data-search-close]')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } });
+  dialog.addEventListener('close', () => { document.body.classList.remove('dialog-open'); opener?.focus(); });
+  document.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'k') { event.preventDefault(); opener = document.activeElement as HTMLElement; if (!dialog.open) { dialog.showModal(); document.body.classList.add('dialog-open'); input.focus(); } }
+  });
+  let timer: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(search, 120); });
+</script>

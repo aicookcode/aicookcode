@@ -1,0 +1,14 @@
+---
+import { ArrowUpRight, BookOpen, GitFork } from '@lucide/astro';
+import { featureModules } from '../config/site';
+
+const icons = { book: BookOpen, project: GitFork } as const;
+---
+<section class="modules-section" aria-labelledby="modules-title">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">SITE MODULES</span><h2 id="modules-title">继续探索 AICookCode<span class="heading-dot">.</span></h2></div><span class="modules-note">内容之外，更多可能</span></div>
+    <div class="modules-grid">
+      {featureModules.filter((module) => module.status === 'live').map((module) => { const Icon = icons[module.icon]; return <a class="module-card" href={module.href}><span class="module-icon"><Icon size={22} /></span><span class="module-copy"><strong>{module.title}</strong><span>{module.description}</span></span><ArrowUpRight class="module-arrow" size={18} /></a>; })}
+    </div>
+  </div>
+</section>

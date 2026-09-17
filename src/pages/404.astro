@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ArrowLeft, Search } from '@lucide/astro';
+---
+<BaseLayout title="页面未找到 · AICookCode" noindex><div class="container not-found"><span class="error-code">404</span><h1>这篇笔记，暂时不在这里。</h1><p>链接可能已经变更，去文章列表再找找吧。</p><div><a class="button button-green" href="/articles/"><ArrowLeft size={17} />浏览文章</a><button class="button button-outline" data-search-open><Search size={17} />搜索文章</button></div></div></BaseLayout>

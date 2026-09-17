@@ -1,0 +1,51 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts, postUrl, dateLabel, readMinutes } from '../../lib/posts';
+import { site, categorySlug } from '../../config/site';
+import { ArrowLeft, ArrowUpRight, Clock3, CalendarDays, Link, List, CodeXml } from '@lucide/astro';
+export async function getStaticPaths() { return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } })); }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const all = await getPosts();
+const related = all.filter((item) => item.id !== post.id).sort((a, b) => Number(b.data.category === post.data.category) - Number(a.data.category === post.data.category)).slice(0, 3);
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const schema = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title,
+  description: post.data.description, datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  image: new URL(post.data.cover, site.url).href,
+  author: { '@type': 'Organization', name: site.author, url: site.url },
+  mainEntityOfPage: new URL(postUrl(post), site.url).href,
+};
+---
+<BaseLayout title={`${post.data.title} · AICookCode`} description={post.data.description} image={post.data.cover} type="article">
+  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} /><meta property="article:published_time" content={post.data.pubDate.toISOString()} /></Fragment>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="container article-page"><header class="article-header"><a class="back-link" href="/articles/"><ArrowLeft size={16} />全部文章</a><a class="article-category" href={`/topics/${categorySlug(post.data.category)}/`}>{post.data.category}</a><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-meta"><span class="author-avatar"><CodeXml size={17} /></span><span>{site.author}</span><span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}><CalendarDays size={14} />{dateLabel(post.data.pubDate)}</time><span><Clock3 size={14} />{readMinutes(post)} 分钟阅读</span></div></header>
+  <img class="article-hero" src={post.data.cover} alt={post.data.coverAlt} width="1400" height="934" fetchpriority="high" />
+  <div class="article-body-layout"><article class="prose article-prose"><Content /><div class="article-end"><span>写到这里，开始动手。</span><CodeXml size={23} /></div><div class="article-tags"><span>本文标签</span>{post.data.tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}</div><div class="article-share"><span id="share-status" role="status">把这篇笔记分享给同样好奇的人。</span><button class="button button-outline" id="copy-link"><Link size={15} />复制链接</button></div>{post.data.updatedDate && <p class="updated-date">最后更新于 {dateLabel(post.data.updatedDate)}</p>}</article>
+  <aside class="article-sidebar"><nav class="toc" aria-label="文章目录"><h2><List size={17} />本篇目录</h2>{toc.map((heading) => <a href={`#${heading.slug}`} class:list={{ 'toc-sub': heading.depth === 3 }}>{heading.text}</a>)}<a class="toc-back" href="#top">回到顶部 ↑</a></nav></aside></div>
+  <section class="related-section"><div class="section-heading"><div><span class="eyebrow">KEEP EXPLORING</span><h2>接着读一篇<span class="heading-dot">.</span></h2></div><a href="/articles/" class="text-link">全部文章<ArrowUpRight size={17} /></a></div><div class="posts-grid">{related.map((item) => <PostCard post={item} />)}</div></section></div>
+</BaseLayout>
+<script>
+  const copyLink = document.querySelector<HTMLButtonElement>('#copy-link');
+  copyLink?.addEventListener('click', async () => {
+    const status = document.querySelector('#share-status')!;
+    try { await navigator.clipboard.writeText(window.location.href.split('#')[0]); status.textContent = '链接已复制。'; }
+    catch { status.textContent = '无法自动复制，请复制浏览器地址栏中的链接。'; }
+  });
+  document.querySelectorAll<HTMLPreElement>('.prose pre').forEach((pre) => {
+    const button = document.createElement('button'); button.className = 'code-copy'; button.type = 'button'; button.textContent = '复制'; button.setAttribute('aria-label', '复制代码');
+    button.addEventListener('click', async () => { try { await navigator.clipboard.writeText(pre.querySelector('code')?.textContent ?? ''); button.textContent = '已复制'; } catch { button.textContent = '请手动复制'; } setTimeout(() => { button.textContent = '复制'; }, 2000); });
+    pre.append(button);
+  });
+  const progress = document.querySelector<HTMLElement>('.reading-progress');
+  const article = document.querySelector<HTMLElement>('.article-prose');
+  function updateProgress() { if (!progress || !article) return; const start = article.offsetTop; const total = article.offsetHeight - innerHeight; progress.style.width = `${Math.max(0, Math.min(100, (scrollY - start) / Math.max(1, total) * 100))}%`; }
+  addEventListener('scroll', updateProgress, { passive: true }); addEventListener('resize', updateProgress); updateProgress();
+  const headings = document.querySelectorAll('.article-prose h2, .article-prose h3');
+  const observer = new IntersectionObserver((entries) => { for (const entry of entries) { if (entry.isIntersecting) { document.querySelectorAll('.toc a').forEach((link) => { const selected = decodeURIComponent(link.getAttribute('href')?.slice(1) || '') === entry.target.id; link.classList.toggle('active', selected); if (selected) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); }); } } }, { rootMargin: '-15% 0px -65% 0px' });
+  headings.forEach((heading) => observer.observe(heading));
+</script>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import PostFilters from '../../components/PostFilters.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<BaseLayout title="全部文章 · AICookCode" description="浏览 AICookCode 的全部 AI 应用、GitHub 实践、建站和开发工具笔记。">
+  <div class="container archive-page"><header class="page-heading"><span class="eyebrow">THE NOTEBOOK</span><h1>每一次实践，都值得记录<span class="heading-dot">.</span></h1><p>从一个想法开始，在一行行代码里找到答案。</p></header>
+  <div class="filter-row"><PostFilters /><span class="article-count" data-post-count>{posts.length} 篇文章</span></div>
+  <div class="posts-grid">{posts.map((post) => <PostCard post={post} />)}</div><p class="empty-state" data-empty-state hidden>这个专题还没有文章，新的笔记正在路上。</p></div>
+</BaseLayout>

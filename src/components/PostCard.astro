@@ -1,0 +1,14 @@
+---
+import { ArrowUpRight, Clock3 } from '@lucide/astro';
+import { categorySlug } from '../config/site';
+import { dateLabel, postUrl, readMinutes, type Post } from '../lib/posts';
+interface Props { post: Post; }
+const { post } = Astro.props;
+---
+<article class="post-card" data-category={categorySlug(post.data.category)} data-tags={JSON.stringify(post.data.tags)}>
+  <a class="post-cover" href={postUrl(post)} tabindex="-1" aria-hidden="true"><img src={post.data.cover} alt={post.data.coverAlt} width="800" height="500" loading="lazy" /><span class={`cover-label ${categorySlug(post.data.category)}`}>{post.data.tags[0]}</span><span class="cover-arrow"><ArrowUpRight size={19} /></span></a>
+  <div class="post-card-content"><div class="post-category">{post.data.category}<span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}>{dateLabel(post.data.pubDate)}</time></div>
+  <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+  <p>{post.data.description}</p>
+  <div class="post-card-bottom"><div class="tag-list">{post.data.tags.slice(0, 2).map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}</div><span class="read-time"><Clock3 size={13} />{readMinutes(post)} 分钟</span></div></div>
+</article>
