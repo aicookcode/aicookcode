@@ -20,7 +20,9 @@ npm run preview
 
 登录 GitHub，新建一个空仓库，例如 `aicookcode`。公开或私有按需要选择，Cloudflare 需要有对应仓库的访问权限。为避免初次推送冲突，远端创建时不要额外初始化 README。
 
-在本地终端配置你自己的 Git 提交身份；不要照抄别人的名字和邮箱。仓库尚未初始化时先执行 `git init -b main`。
+在本地终端配置你自己的 Git 提交身份；不要照抄别人的名字和邮箱。
+
+仓库尚未初始化时先执行 `git init -b main`。
 
 ```powershell
 git config user.name "YOUR_NAME"
@@ -29,7 +31,8 @@ git add .
 git diff --staged --stat
 git commit -m "feat: launch AICookCode Astro blog"
 git remote add origin https://github.com/YOUR_ACCOUNT/aicookcode.git
-git push -u origin main
+git push -u origin main --force # 强推合并
+
 ```
 
 将占位值替换成你的真实信息。首次推送按 Git 的登录提示完成认证。不要把令牌写进远端 URL，也不要把密钥提交到仓库。已有 `origin` 时先用 `git remote -v` 查看并确认，不要盲目重复添加。
