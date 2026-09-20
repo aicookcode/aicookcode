@@ -1,0 +1,54 @@
+---
+import { ArrowUpRight, QrCode, Rss } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  kicker?: string;
+  description?: string;
+}
+
+const {
+  title = '保持连接',
+  kicker = 'STAY CONNECTED',
+  description = '选择适合你的方式，持续获取新的开发实践。',
+} = Astro.props;
+---
+<section class="contact-channels" aria-labelledby="contact-channels-title">
+  <div class="contact-channels-heading">
+    <span class="contact-channels-kicker">{kicker}</span>
+    <h2 id="contact-channels-title">{title}<span class="heading-dot">.</span></h2>
+    <p>{description}</p>
+  </div>
+  <div class="contact-channels-grid">
+    <article class="contact-channel-card">
+      <div class="contact-channel-heading">
+        <span class="contact-channel-icon"><Rss size={18} /></span>
+        <div>
+          <h3>RSS 订阅</h3>
+          <span>按自己的节奏阅读更新</span>
+        </div>
+      </div>
+      <p>没有算法排序，用 RSS 获取新文章，不错过每一次实践更新。</p>
+      <div style="width:100%;text-align:center;margin-top:40px">
+        <a class="button button-green" href="/rss.xml">
+        订阅 RSS<ArrowUpRight size={16} />
+      </a>
+      </div>
+    </article>
+
+    <article class="contact-channel-card contact-channel-card--wechat">
+      <div class="contact-channel-heading">
+        <span class="contact-channel-icon"><QrCode size={18} /></span>
+        <div>
+          <h3>微信公众号·AI 煮代码汤</h3>
+          <span>扫码关注，获取 AI、编程和开发实践的最新分享。</span>
+        </div>
+      </div>
+      <div class="contact-channel-wechat-body">
+        <div class="contact-channel-qr">
+          <img src="/wechat-qrcode.png" alt="微信公众号 AI 煮代码汤二维码" />
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+// Public assets keep their filenames, so version the URL when the icon changes.
+const icon = readFileSync(resolve('public/favicon.png'));
+const version = createHash('sha256').update(icon).digest('hex').slice(0, 12);
+const href = `${import.meta.env.BASE_URL}favicon.png?v=${version}`;
+---
+<link rel="icon" href={href} type="image/x-icon" />

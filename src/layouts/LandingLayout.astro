@@ -1,5 +1,6 @@
 ---
 import { site } from '../config/site';
+import Favicon from '../components/Favicon.astro';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; }
 const { title = site.title, description = site.description } = Astro.props;
@@ -13,7 +14,7 @@ const { title = site.title, description = site.description } = Astro.props;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#173c31" />
     <link rel="canonical" href={site.url} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Favicon />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
