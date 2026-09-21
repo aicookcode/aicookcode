@@ -1,7 +1,7 @@
 ---
 title: "第一个 AI 应用：先做小，再做完整"
 description: "从一个明确的问题开始，把输入、输出、错误处理与成本，放进你的第一份 AI 应用清单。"
-pubDate: 2026-09-16T06:00:00+08:00
+pubDate: 2026-04-02T06:00:00+08:00
 category: "AI 应用"
 tags: ["AI", "独立开发"]
 cover: "/images/ai-cover.png"

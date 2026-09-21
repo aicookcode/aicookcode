@@ -1,7 +1,7 @@
 ---
 title: "不再只会 git push：一套顺手的日常工作流"
 description: "从分支、提交到 Pull Request，用一套简单的 Git 流程，让每一次修改都有迹可循。"
-pubDate: 2026-09-16T05:00:00+08:00
+pubDate: 2026-03-20T05:00:00+08:00
 category: "GitHub 实践"
 tags: ["Git", "GitHub"]
 cover: "/images/github-cover.png"
