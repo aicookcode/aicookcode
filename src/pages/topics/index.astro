@@ -6,6 +6,6 @@ import { ArrowUpRight, Sparkles, GitBranch, Globe, Terminal } from '@lucide/astr
 const posts = await getPosts();
 const icons = [Sparkles, GitBranch, Globe, Terminal];
 ---
-<BaseLayout title="专题 · AICookCode" description="按 AI 应用、GitHub 实践、建站笔记和开发工具浏览 AICookCode 的专题文章。" noindex><div class="container archive-page"><header class="page-heading"><span class="eyebrow">IDEAS, ORGANIZED</span><h1>找到你的下一个探索方向<span class="heading-dot">.</span></h1><p>沿着一个主题深入，慢慢把知识连成线。</p></header>
+<BaseLayout title="专题 · AICookCode" description="按 AI 应用、GitHub 实践、建站笔记和开发工具浏览 AICookCode 的专题文章。"><div class="container archive-page"><header class="page-heading"><span class="eyebrow">IDEAS, ORGANIZED</span><h1>找到你的下一个探索方向<span class="heading-dot">.</span></h1><p>沿着一个主题深入，慢慢把知识连成线。</p></header>
   <div class="topic-directory">{categories.map((category, index) => { const Icon = icons[index]; return <a class={`topic-directory-item ${category.color}`} href={`/topics/${category.slug}/`}><span class="topic-icon"><Icon size={30} /></span><span class="topic-directory-number">0{index + 1}</span><h2>{category.name}</h2><p>{category.description}</p><div><span>{posts.filter((post) => post.data.category === category.name).length} 篇笔记</span><ArrowUpRight size={23} /></div></a>; })}</div>
 </div></BaseLayout>
