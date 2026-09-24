@@ -18,15 +18,32 @@ const schema = {
   description: post.data.description, datePublished: post.data.pubDate.toISOString(),
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   image: new URL(post.data.cover, site.url).href,
-  author: { '@type': 'Organization', name: site.author, url: site.url },
-  mainEntityOfPage: new URL(postUrl(post), site.url).href,
+  inLanguage: 'zh-CN', articleSection: post.data.category, keywords: post.data.tags.join(', '),
+  author: { '@type': 'Person', '@id': `${site.url}/#author`, name: site.author, url: new URL(site.authorUrl, site.url).href },
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${site.url}/#organization`,
+    name: site.name,
+    url: site.url,
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.png', site.url).href },
+  },
+  isPartOf: { '@type': 'WebSite', '@id': `${site.url}/#website`, name: site.name, url: site.url },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: site.name, item: site.url },
+      { '@type': 'ListItem', position: 2, name: '文章', item: `${site.url}/articles/` },
+      { '@type': 'ListItem', position: 3, name: post.data.title, item: postUrl(post) },
+    ],
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl(post) },
 };
 ---
 <BaseLayout title={`${post.data.title} · AICookCode`} description={post.data.description} image={post.data.cover} type="article">
-  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} /><meta property="article:published_time" content={post.data.pubDate.toISOString()} /></Fragment>
+  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} /><meta property="article:published_time" content={post.data.pubDate.toISOString()} />{post.data.updatedDate && <meta property="article:modified_time" content={post.data.updatedDate.toISOString()} />}</Fragment>
   <div class="reading-progress" aria-hidden="true"></div>
   <div class="container article-page"><header class="article-header"><a class="back-link" href="/articles/"><ArrowLeft size={16} />全部文章</a><a class="article-category" href={`/topics/${categorySlug(post.data.category)}/`}>{post.data.category}</a><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-meta"><span class="author-avatar"><CodeXml size={17} /></span><span>{site.author}</span><span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}><CalendarDays size={14} />{dateLabel(post.data.pubDate)}</time><span><Clock3 size={14} />{readMinutes(post)} 分钟阅读</span></div></header>
-  <div class="article-body-layout"><article class="prose article-prose"><Content /><AuthorCard /><ContactChannels kicker="KEEP IN TOUCH" title="继续保持连接" description="如果这篇文章对你有帮助，可以用下面的方式继续关注。" /><div class="article-end"></div><div class="article-tags"><span>本文标签</span>{post.data.tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}</div><div class="article-share"><span id="share-status" role="status">把这篇笔记分享给同样好奇的人。</span><button class="button button-outline" id="copy-link"><Link size={15} />复制链接</button></div>{post.data.updatedDate && <p class="updated-date">最后更新于 {dateLabel(post.data.updatedDate)}</p>}</article>
+  <div class="article-body-layout"><article class="prose article-prose"><Content /><AuthorCard /><ContactChannels kicker="KEEP IN TOUCH" title="继续保持连接" description="如果这篇文章对你有帮助，可以用下面的方式继续关注。" /><div class="article-end"></div><div class="article-tags"><span>本文标签</span>{post.data.tags.map((tag) => <span class="article-tag">#{tag}</span>)}</div><div class="article-share"><span id="share-status" role="status">把这篇笔记分享给同样好奇的人。</span><button class="button button-outline" id="copy-link"><Link size={15} />复制链接</button></div>{post.data.updatedDate && <p class="updated-date">最后更新于 {dateLabel(post.data.updatedDate)}</p>}</article>
   <aside class="article-sidebar"><nav class="toc" aria-label="文章目录"><h2><List size={17} />本篇目录</h2>{toc.map((heading) => <a href={`#${heading.slug}`} class:list={{ 'toc-sub': heading.depth === 3 }}>{heading.text}</a>)}<a class="toc-back" href="#top">回到顶部 ↑</a></nav></aside></div>
   <section class="related-section"><div class="section-heading"><div><span class="eyebrow">KEEP EXPLORING</span><h2>接着读一篇<span class="heading-dot">.</span></h2></div><a href="/articles/" class="text-link">全部文章<ArrowUpRight size={17} /></a></div><div class="posts-grid">{related.map((item) => <PostCard post={item} />)}</div></section></div>
 </BaseLayout>

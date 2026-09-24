@@ -8,4 +8,4 @@ export function getStaticPaths() { return categories.map((category) => ({ params
 const { category } = Astro.props;
 const posts = (await getPosts()).filter((post) => post.data.category === category.name);
 ---
-<BaseLayout title={`${category.name} · AICookCode`} description={category.description}><div class="container archive-page"><header class="page-heading"><a class="back-link" href="/topics/"><ArrowLeft size={16} />全部专题</a><h1>{category.name}<span class="heading-dot">.</span></h1><p>{category.description} <span class="muted">/ {posts.length} 篇笔记</span></p></header><div class="posts-grid">{posts.map((post) => <PostCard post={post} />)}</div></div></BaseLayout>
+<BaseLayout title={`${category.name} · AICookCode`} description={category.description} noindex><div class="container archive-page"><header class="page-heading"><a class="back-link" href="/topics/"><ArrowLeft size={16} />全部专题</a><h1>{category.name}<span class="heading-dot">.</span></h1><p>{category.description} <span class="muted">/ {posts.length} 篇笔记</span></p></header><div class="posts-grid">{posts.map((post) => <PostCard post={post} />)}</div></div></BaseLayout>

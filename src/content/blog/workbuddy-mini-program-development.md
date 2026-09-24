@@ -1,16 +1,17 @@
 ---
-title: "小白也能用 WorkBuddy 做微信小程序：开发阶段"
-description: "从需求讨论、代码开发到微信开发者工具里的模拟器运行，带你完成小程序上线前的前三步。"
+title: "WorkBuddy 微信小程序开发：从需求到模拟器运行"
+description: "用 WorkBuddy 完成微信小程序开发：需求拆解、工作空间、代码生成、微信开发者工具导入与模拟器运行。"
 pubDate: 2026-08-23T07:40:00+08:00
+updatedDate: 2026-09-24T12:00:00+08:00
 category: "AI 应用"
 tags: ["WorkBuddy", "微信小程序", "AI 编程", "小程序"]
 cover: "/media/workbuddy-mini-program-development/cover.jpg"
 coverAlt: "WorkBuddy 微信小程序开发阶段文章封面"
 ---
 
-以前，开发小程序是程序员的专属技能；现在有了 AI，普通人一样可以做出自己的小程序。
+这篇文章是 WorkBuddy 微信小程序系列的第一篇，聚焦“从想法到电脑模拟器跑通”的开发阶段。你会看到如何拆解需求、准备工作空间、让 WorkBuddy 生成代码，再把项目导入微信开发者工具进行调试。
 
-我用两篇文章，以腾讯生态中的 **WorkBuddy** 搭建小程序为例，手把手带你走完从 0 到 1 的完整流程，让完全不懂代码的你，也能做出一个可以线上使用的小程序。
+本文先把开发链路跑通，不展开真机测试、体验版和审核发布；这些上线步骤放在[下一篇文章](/articles/workbuddy-mini-program-launch/)中单独说明。
 
 <figure>
   <video controls playsinline preload="metadata" width="720" poster="/media/workbuddy-mini-program-series/video-poster.jpg" aria-label="WorkBuddy 微信小程序从开发到上线的流程演示">
@@ -20,22 +21,13 @@ coverAlt: "WorkBuddy 微信小程序开发阶段文章封面"
   <figcaption>WorkBuddy 搭建微信小程序的流程演示 · 时长 00:32</figcaption>
 </figure>
 
-**整个流程可以分成六步：**
+**开发阶段可以拆成三个步骤：**
 
 1. 先和 WorkBuddy 讨论需求，让它开发完成一个最小可用版本；
 2. 在本地准备微信开发者工具，并根据需要注册小程序账号、获取 AppID；
 3. 把项目导入微信开发者工具，在电脑模拟器中运行和修复问题；
-4. 使用「预览」或「真机调试」在手机上验证实际效果；
-5. 上传代码并设置为体验版，邀请项目成员或体验成员扫码测试；
-6. 如果要面向公众发布，再按小程序主体和业务情况完成平台备案等要求，提交审核并发布。
 
-**整个流程将拆成两篇文章介绍：**
-
-- 本文聚焦前 3 个步骤，带你从需求讨论和代码开发开始，到将小程序导入微信开发者工具，并在电脑模拟器中成功运行。
-
-- 下一篇将继续介绍后续流程：从真机测试、体验版配置，到提交审核并正式发布上线。
-
-下一篇：[小白也能用 WorkBuddy 做微信小程序：上线阶段](/articles/workbuddy-mini-program-launch/)
+本文聚焦这三个步骤；真机测试、体验版和审核发布属于下一阶段，放在系列第二篇单独说明。
 
 ## WorkBuddy 的两个用途
 

@@ -21,14 +21,14 @@ npm run preview  # 本地预览生产构建
 
 ## 已实现
 
-- 响应式首页、全部文章、专题页、标签页、开源项目索引、关于页和 404；首页由精选文章、最新文章、站点功能入口、专题和 RSS 组成。
+- 响应式首页、全部文章、专题页、开源项目索引、关于页和 404；首页由精选文章、最新文章、站点功能入口、专题和 RSS 组成。专题页用于站内浏览，文章页是主要搜索落地页。
 - Markdown 内容集合，自动文章目录、阅读时长、阅读进度、代码复制与链接分享。
 - 浏览器端全文搜索，支持标题、摘要、标签、分类与 Markdown 正文；按标题和标签加权排序。
 - 分类筛选、深浅主题、本地保存主题偏好、移动端导航与键盘可访问搜索弹窗。
 - RSS、站点地图、robots.txt、canonical、Open Graph、文章结构化数据。
 - 隐私政策、服务条款、免责声明和联系页面，方便长期运营与广告审核。
 - GitHub Actions 类型检查和生产构建，Cloudflare Pages 静态缓存与响应头。
-- 6 篇可编辑的原创起步文章；第三方开源项目已明确标注归属。
+- 10 篇可编辑的原创文章；第三方开源项目已明确标注归属。
 
 搜索索引直接加载到浏览器，适合小中型个人博客。大量长文时可改用 Pagefind 分片索引。本站不包含用户账户、评论后端、邮件订阅服务或模型 API 服务。
 
@@ -37,7 +37,7 @@ npm run preview  # 本地预览生产构建
 ```text
 .github/workflows/ci.yml    GitHub 自动检查
 docs/DEPLOYMENT.md          GitHub 与 Cloudflare 部署操作
-src/config/site.ts         站点信息、导航、功能模块、分类、未来 GitHub 地址
+src/config/site.ts         站点信息、导航、功能模块、分类和 GitHub 地址
 src/content/blog/          Markdown 文章
 src/content.config.ts      文章字段校验
 src/components/            导航、搜索、文章卡片、站点功能模块等
@@ -78,7 +78,7 @@ draft: false
 
 ## GitHub 与免费部署
 
-账号和仓库尚未确定，因此 `src/config/site.ts` 的 `githubUrl` 暂时为空。导航中的 GitHub 链接当前指向 GitHub 官网，未冒用仓库地址。确定仓库后填入真实 URL。根首页的 Email、X、Wechat、Telegram 也集中配置在同一文件的 `contact` 对象中；Wechat 使用微信号展示，X 和 Telegram 使用完整个人主页链接。
+`src/config/site.ts` 的 `githubUrl` 指向本站公开仓库，用于导航、作者归属和结构化数据；`author` 与 `authorUrl` 用于统一文章作者身份。根首页的 Email、X、Wechat、Telegram 也集中配置在同一文件的 `contact` 对象中；Wechat 使用微信号展示，X 和 Telegram 使用完整个人主页链接。
 
 详细步骤见 [部署说明](docs/DEPLOYMENT.md)。Cloudflare Pages 只需要绑定 `aicookcode.com` 一个自定义域名。Cloudflare Pages 使用：
 
@@ -100,4 +100,3 @@ draft: false
 ## 许可
 
 本项目未代替站点所有者指定代码与文章的开源许可证。公开仓库前请按你的授权意图添加 LICENSE；第三方素材仍遵守各自许可。
-

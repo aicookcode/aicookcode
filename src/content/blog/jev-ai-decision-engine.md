@@ -1,7 +1,8 @@
 ---
-title: "大白话讲清最近爆火的Jev：一台「高速判断」的AI机器"
-description: "一个超级快、超级便宜的“智能判断机器”"
+title: "Jev 是什么？用大白话解释它与 GPT、Claude 的区别"
+description: "用中文解释 Jev 的判断模型、Choice、Score、Noul 三种模式，以及它与 GPT、Claude 在速度、成本和输出方式上的差异。"
 pubDate: 2026-09-19T14:22:56+08:00
+updatedDate: 2026-09-24T12:00:00+08:00
 category: "AI 应用"
 tags: ["Jev", "TypeSafe", "AI", "AI Agent"]
 cover: "/media/jev-ai-decision-engine/cover.jpg"

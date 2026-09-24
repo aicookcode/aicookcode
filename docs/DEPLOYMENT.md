@@ -58,7 +58,7 @@ Cloudflare 界面入口可能调整，以官方说明为准：https://developers
 4. 等待 DNS 与证书状态变为有效，检查 `https://aicookcode.com/`、`https://aicookcode.com/articles/` 和 `https://aicookcode.com/privacy/`。
 5. 推荐同时添加 `www.aicookcode.com`，再在 Cloudflare 配置到根域名的永久重定向。本站继续使用 `https://aicookcode.com` 作为唯一主域名。
 
-本站使用单一主域名和标准路由：`aicookcode.com/` 是首页，文章位于 `/articles/`，专题、项目、标签、RSS、法律和联系页面均位于同一域名下。`astro.config.mjs`、`src/config/site.ts` 和 `public/robots.txt` 已按这个架构配置，未来换域名时同步修改。站点地图地址为 `https://aicookcode.com/sitemap-index.xml`。
+本站使用单一主域名和标准路由：`aicookcode.com/` 是首页，文章位于 `/articles/`，专题、项目、RSS、法律和联系页面均位于同一域名下。标签只作为文章元数据展示，不生成独立归档页；专题页保留给访客浏览，但目前作为导航页，不作为独立搜索落地页。`astro.config.mjs`、`src/config/site.ts` 和 `public/robots.txt` 已按这个架构配置，未来换域名时同步修改。站点地图地址为 `https://aicookcode.com/sitemap-index.xml`。
 
 官方说明：https://developers.cloudflare.com/pages/configuration/custom-domains/
 
@@ -219,7 +219,7 @@ https://aicookcode.com/about/
 6. 打开新文章 URL，确认返回 200。
 7. 必要时在 URL inspection 中点击 `Request indexing`。
 
-提交 sitemap 不保证立即收录；不要频繁重复提交同一个 URL，也不要使用重复 URL、隐藏文字或其他方式强行提高收录。
+提交 sitemap 不保证立即收录；不要频繁重复提交同一个 URL，也不要使用重复 URL、隐藏文字或其他方式强行提高收录。删除归档路由后，旧的 `/tags/.../` 地址可能会在 Search Console 中暂时显示为 404，这是预期的退出过程；不要为了消除这类历史记录把它们重新加入 sitemap。
 
 ## 8. 常见问题
 

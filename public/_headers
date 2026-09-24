@@ -6,3 +6,9 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+/search-index.json
+  X-Robots-Tag: noindex, nofollow
+
+/rss.xml
+  X-Robots-Tag: noindex, follow

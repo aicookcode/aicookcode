@@ -1,11 +1,12 @@
 export const site = {
   name: 'AICookCode',
-  title: 'AICookCode - AI Applications & Practice',
-  description: 'AI 应用与实践。探索想法，构建产品，记录每一次技术实践。',
+  title: 'AICookCode - AI 应用与编程实践',
+  description: '记录 AI 应用、编程实践、独立建站和开发工具，分享从想法到上线的真实过程。',
   url: 'https://aicookcode.com',
-  author: 'AICookCode',
-  // Set this after choosing your GitHub repository, e.g. https://github.com/you/aicookcode.
-  githubUrl: '',
+  author: 'AI 煮代码汤',
+  authorUrl: '/about/',
+  // Public repository for authorship and organization metadata.
+  githubUrl: 'https://github.com/aicookcode/aicookcode',
   contact: {
     email: 'hello@aicookcode.com',
     xUrl: 'https://x.com/aicookcode',

@@ -10,5 +10,5 @@ const { post } = Astro.props;
   <div class="post-card-content"><div class="post-category">{post.data.category}<span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}>{dateLabel(post.data.pubDate)}</time></div>
   <h3><a href={postPath(post)}>{post.data.title}</a></h3>
   <p>{post.data.description}</p>
-  <div class="post-card-bottom"><div class="tag-list">{post.data.tags.slice(0, 2).map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}</div><span class="read-time"><Clock3 size={13} />{readMinutes(post)} 分钟</span></div></div>
+  <div class="post-card-bottom"><div class="tag-list" aria-label="文章标签">{post.data.tags.slice(0, 2).map((tag) => <span>#{tag}</span>)}</div><span class="read-time"><Clock3 size={13} />{readMinutes(post)} 分钟</span></div></div>
 </article>
