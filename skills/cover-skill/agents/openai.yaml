@@ -1,0 +1,7 @@
+interface:
+  display_name: "博客封面提示词"
+  short_description: "生成符合博客版式的封面提示词与多套配色方向"
+  default_prompt: "使用 $cover-skill 为这篇博客文章设计一个符合当前网站比例的封面提示词，并提供三套可选配色。"
+
+policy:
+  allow_implicit_invocation: true
