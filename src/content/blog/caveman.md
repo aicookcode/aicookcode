@@ -76,6 +76,4 @@ Caveman 提供压缩输入的能力：`caveman-compress`。
 
 方法非常简单。Caveman已经列出了所有环境安装的方法，根据需要选择对应的命令安装即可✅。
 
-往期回顾[有意思的github项目](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU0Nzg5NTc0NQ==&action=getalbum&album_id=4476374240656785408#wechat_redirect)[AI 新鲜事](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU0Nzg5NTc0NQ==&action=getalbum&album_id=4476376783680077835#wechat_redirect)
-
 *本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*

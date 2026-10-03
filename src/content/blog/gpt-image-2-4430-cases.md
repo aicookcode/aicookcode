@@ -77,6 +77,4 @@ awesome-gpt-image-2 可以先收藏起来。下次不知道怎么写生图提示
 
 你最近用 GPT Image 2 生成了什么图？欢迎在评论区分享。
 
-往期回顾[有意思的github项目](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU0Nzg5NTc0NQ==&action=getalbum&album_id=4476374240656785408#wechat_redirect)[AI 新鲜事](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU0Nzg5NTc0NQ==&action=getalbum&album_id=4476376783680077835#wechat_redirect)
-
 *本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
