@@ -7,6 +7,8 @@ category: "AI 应用"
 tags: ["WorkBuddy", "微信小程序", "AI 编程", "小程序"]
 cover: "/media/workbuddy-mini-program-development/cover.jpg"
 coverAlt: "WorkBuddy 微信小程序开发阶段文章封面"
+featured: true
+featuredOrder: 1
 ---
 
 这篇文章是 WorkBuddy 微信小程序系列的第一篇，聚焦“从想法到电脑模拟器跑通”的开发阶段。你会看到如何拆解需求、准备工作空间、让 WorkBuddy 生成代码，再把项目导入微信开发者工具进行调试。
