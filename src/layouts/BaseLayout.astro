@@ -8,6 +8,7 @@ import '../styles/global.css';
 interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; }
 const { title = site.title, description = site.description, image = '/images/workspace.jpg', type = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const isArticlesPage = Astro.url.pathname === '/articles/' || Astro.url.pathname === '/articles';
 const siteSchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -74,7 +75,7 @@ const siteSchema = {
     <script is:inline>try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light'; } catch { document.documentElement.dataset.theme = 'light'; }</script>
     <slot name="head" />
   </head>
-  <body id="top" class:list={{ 'page-article': type === 'article' }}>
+  <body id="top" class:list={{ 'page-article': type === 'article', 'page-articles': isArticlesPage }}>
     <a class="skip-link" href="#main">跳转到正文</a>
     <Header />
     <main id="main"><slot /></main>

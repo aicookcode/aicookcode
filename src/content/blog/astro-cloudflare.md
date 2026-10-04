@@ -6,7 +6,7 @@ category: "建站笔记"
 tags: ["Astro", "Cloudflare"]
 cover: "/images/astro-cover.png"
 coverAlt: "Astro 静态网站通过 GitHub 部署到 Cloudflare Pages 的流程"
-featured: true
+featured: false
 ---
 
 一个个人博客最重要的能力，是让你愿意持续写下去。Astro 可以把 Markdown 文章生成静态页面，搭配 GitHub 和 Cloudflare Pages，形成一个维护成本很低的发布流程。

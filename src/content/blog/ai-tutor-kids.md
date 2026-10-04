@@ -6,6 +6,8 @@ category: "GitHub 实践"
 tags: ["AI 家教", "教育", "RAG"]
 cover: "/media/ai-tutor-kids/cover.jpg"
 coverAlt: "定制化 AI 家教：把课本导进去，它就能一直教孩子"
+featured: true
+featuredOrder: 3
 ---
 
 孩子拿着数学题来问你，你不一定会。让他自己去问 AI，几秒就有答案——但答案看懂了，换道题还是错。
