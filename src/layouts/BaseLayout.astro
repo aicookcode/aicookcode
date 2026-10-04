@@ -74,7 +74,7 @@ const siteSchema = {
     <script is:inline>try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light'; } catch { document.documentElement.dataset.theme = 'light'; }</script>
     <slot name="head" />
   </head>
-  <body id="top">
+  <body id="top" class:list={{ 'page-article': type === 'article' }}>
     <a class="skip-link" href="#main">跳转到正文</a>
     <Header />
     <main id="main"><slot /></main>

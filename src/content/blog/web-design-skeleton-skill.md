@@ -1,0 +1,124 @@
+---
+title: "去掉网页 AI 味，这个 Skill 给 AI 装了 20 套设计骨架"
+description: "去掉网页AI味，页面更自然更好看不再模板化"
+pubDate: 2026-08-05T17:00:00+08:00
+category: "GitHub 实践"
+tags: ["网页设计", "AI Skill", "前端"]
+cover: "/media/web-design-skeleton-skill/cover.jpg"
+coverAlt: "去掉网页 AI 味，这个 Skill 给 AI 装了 20 套设计骨架"
+---
+
+AI 把页面开发的门槛拉下来了。以前不会写代码的人基本碰不了网页，现在大家对着 Claude Code 或者 Cursor 说一句话，一个页面就出来了。
+
+但多看几个你就会发现问题。功能没问题，排版不差，但就是有一股说不清道不明的 **AI 味**——紫蓝渐变、居中标题、圆角卡片、Inter 字体从头用到尾。十个 AI 做的页面摆一起，很难分出来谁是谁。
+
+这篇聊聊一个专门解决这个问题的设计 Skill：**Hallmark**。
+
+![Hallmark](/media/web-design-skeleton-skill/img_01.png)
+
+## Hallmark 到底是什么
+
+一句话说清楚：Hallmark 是给 Claude Code、Cursor、Codex 等 Agent 用的**设计 Skill**。官方管自己叫“反 AI 味的设计 Skill”，重点不光是让你做的页面好看，而且让它**不像模板**。
+
+它不是只在页面上换个配色就完了。Hallmark 干活分三层：**结构、主题、检查**。
+
+它内置了 **20 个主题**和 **57 个 AI 味检查项**。生成页面之前会先过一遍检查，把最常见的 AI 默认套路挡在外面。比如“所有标题居中”“一个字体从头用到尾”“紫蓝渐变背景”——这些都是它认定要拦掉的。
+
+**未使用 Hallmark 效果**：
+
+![未使用 Hallmark 的页面效果](/media/web-design-skeleton-skill/img_02.png)
+
+**使用 Hallmark 效果**：
+
+<figure class="article-video">
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="1784" height="1080" poster="/media/web-design-skeleton-skill/hallmark-demo-poster.jpg" aria-label="Hallmark 页面设计效果演示">
+    <source src="/media/web-design-skeleton-skill/hallmark-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/web-design-skeleton-skill/hallmark-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>Hallmark 页面设计效果演示（9 秒）</figcaption>
+</figure>
+
+## 它和普通模板工具不太一样
+
+普通模板工具的思路很简单：**先有版式，你往里面填内容**。换一批文案，换个标题，就是另一个页面。
+
+Hallmark 反过来：先看你的需求是什么类型、给谁看、整体调性偏什么方向，然后**挑一种合适的页面骨架**，再从 20 个主题里匹配一个风格对得上的。
+
+比如偏技术的项目不会给你配一个手工面包房的调性，反过来也一样。
+
+如果 20 个主题里实在没有特别合适的，它会走“自定义”路径——直接从零搭配色、字体和布局，不硬塞一个不搭的主题。
+
+结果就是：不同需求做出来的页面，**骨架不一样、风格不一样**，不会让人觉得是同一套东西换皮。
+
+![Hallmark 根据不同需求自动匹配主题与结构](/media/web-design-skeleton-skill/img_03.png)
+
+## 四个核心动作
+
+Hallmark 有四个动词，每个对应一种能力。
+
+### Build：默认生成
+
+给一个需求描述，Hallmark 会自动读项目类型、受众和调性，然后**挑骨架、配主题**，最后跑一遍 AI 味检查，把页面给你。
+
+### Audit：检查页面
+
+把你现有的页面扔给它，它会给你一份问题清单——不是改代码，是**给页面做个体检**。哪里默认审美太明显、哪里骨架太通用，它会一条条标出来。
+
+### Redesign：重新设计
+
+保留原有内容，换一副骨架和主题。比如你有一个活动页面，觉得太像 AI 交出来的作业，可以直接让它**重构一遍**——同样的文案、同样的功能，但长得完全不一样了。
+
+### Study：学习设计 DNA
+
+喂一张截图或者一个网址，Hallmark 会把这个页面的结构逻辑、字体搭配、颜色锚点抽取出来。
+
+它不是照抄像素，而是把你的设计参考翻译成一组**结构规则**，你可以拿着这份参考再去生成新页面。
+
+## 上手方式：一句话给 Agent
+
+安装很简单，把下面这行发给你的 Agent，它会自己搞定：
+
+```text
+安装 Hallmark skill：
+https://github.com/Nutlope/hallmark
+```
+
+使用时，直接用自然语言描述你的需求即可。
+
+**生成页面**
+
+```text
+用 Hallmark 帮我做一个播客平台的落地页。
+```
+
+**检查问题**
+
+```text
+用 Hallmark 帮我检查一下这个页面，看看哪里 AI 味太重。
+```
+
+**重新设计**
+
+```text
+用 Hallmark 重新设计一下这个页面，保留内容不变，换一套不同的骨架和主题。
+```
+
+**学习设计**
+
+```text
+分析一下这个网站的设计 DNA，输出一份设计参考文件。
+```
+
+## 适合谁用
+
+如果你是这三种人，Hallmark 值得试试：
+
+1. 经常用 AI 辅助做落地页、产品页、活动页的人，想让页面风格更分化一点。
+2. 厌倦了“紫蓝渐变 + 圆角卡片 + 中心排版”那套默认审美，但自己又不想从零调设计。
+3. 经常需要参考某个网站的风格来快速出页面，想把学习到的设计 DNA 直接用在新项目上。
+
+反过来，如果你只想最快出一个能用的页面，不在乎有没有**设计判断**，那直接用 AI 默认生成一个可能更快。
+
+## 写在最后
+
+Hallmark 给 AI 加了一层**设计骨架**，去掉了那股模板味，让页面更自然一点、也更好看一点。

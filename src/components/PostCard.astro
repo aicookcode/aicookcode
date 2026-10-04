@@ -6,7 +6,7 @@ interface Props { post: Post; }
 const { post } = Astro.props;
 ---
 <article class="post-card" data-category={categorySlug(post.data.category)} data-tags={JSON.stringify(post.data.tags)}>
-  <a class="post-cover" href={postPath(post)} tabindex="-1" aria-hidden="true"><img src={post.data.cover} alt={post.data.coverAlt} width="800" height="500" loading="lazy" /><span class={`cover-label ${categorySlug(post.data.category)}`}>{post.data.tags[0]}</span><span class="cover-arrow"><ArrowUpRight size={19} /></span></a>
+  <a class="post-cover" href={postPath(post)} tabindex="-1" aria-hidden="true"><img src={post.data.cover} alt={post.data.coverAlt} width="800" height="500" loading="lazy" /><span class="cover-arrow"><ArrowUpRight size={19} /></span></a>
   <div class="post-card-content"><div class="post-category">{post.data.category}<span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}>{dateLabel(post.data.pubDate)}</time></div>
   <h3><a href={postPath(post)}>{post.data.title}</a></h3>
   <p>{post.data.description}</p>

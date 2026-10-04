@@ -6,7 +6,7 @@ import AuthorCard from '../../components/AuthorCard.astro';
 import ContactChannels from '../../components/ContactChannels.astro';
 import { getPosts, postUrl, dateLabel, readMinutes } from '../../lib/posts';
 import { site, categorySlug } from '../../config/site';
-import { ArrowLeft, ArrowUpRight, Clock3, CalendarDays, Link, List, CodeXml } from '@lucide/astro';
+import { ArrowLeft, ArrowUp, ArrowUpRight, Clock3, CalendarDays, Link, List, CodeXml } from '@lucide/astro';
 export async function getStaticPaths() { return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } })); }
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
@@ -42,9 +42,10 @@ const schema = {
 <BaseLayout title={`${post.data.title} · AICookCode`} description={post.data.description} image={post.data.cover} type="article">
   <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} /><meta property="article:published_time" content={post.data.pubDate.toISOString()} />{post.data.updatedDate && <meta property="article:modified_time" content={post.data.updatedDate.toISOString()} />}</Fragment>
   <div class="reading-progress" aria-hidden="true"></div>
+  <a class="article-back-top is-hidden" href="#top" aria-label="回到顶部" title="回到顶部"><ArrowUp size={18} stroke-width={2.25} /></a>
   <div class="container article-page"><header class="article-header"><a class="back-link" href="/articles/"><ArrowLeft size={16} />全部文章</a><a class="article-category" href={`/topics/${categorySlug(post.data.category)}/`}>{post.data.category}</a><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-meta"><span class="author-avatar"><CodeXml size={17} /></span><span>{site.author}</span><span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}><CalendarDays size={14} />{dateLabel(post.data.pubDate)}</time><span><Clock3 size={14} />{readMinutes(post)} 分钟阅读</span></div></header>
   <div class="article-body-layout"><article class="prose article-prose"><Content /><AuthorCard /><ContactChannels kicker="KEEP IN TOUCH" title="继续保持连接" description="如果这篇文章对你有帮助，可以用下面的方式继续关注。" /><div class="article-end"></div><div class="article-tags"><span>本文标签</span>{post.data.tags.map((tag) => <span class="article-tag">#{tag}</span>)}</div><div class="article-share"><span id="share-status" role="status">把这篇笔记分享给同样好奇的人。</span><button class="button button-outline" id="copy-link"><Link size={15} />复制链接</button></div>{post.data.updatedDate && <p class="updated-date">最后更新于 {dateLabel(post.data.updatedDate)}</p>}</article>
-  <aside class="article-sidebar"><nav class="toc" aria-label="文章目录"><h2><List size={17} />本篇目录</h2>{toc.map((heading) => <a href={`#${heading.slug}`} class:list={{ 'toc-sub': heading.depth === 3 }}>{heading.text}</a>)}<a class="toc-back" href="#top">回到顶部 ↑</a></nav></aside></div>
+  <aside class="article-sidebar"><nav class="toc" aria-label="文章目录"><h2><List size={17} />本篇目录</h2>{toc.map((heading) => <a href={`#${heading.slug}`} class:list={{ 'toc-sub': heading.depth === 3 }}>{heading.text}</a>)}</nav></aside></div>
   <section class="related-section"><div class="section-heading"><div><span class="eyebrow">KEEP EXPLORING</span><h2>接着读一篇<span class="heading-dot">.</span></h2></div><a href="/articles/" class="text-link">全部文章<ArrowUpRight size={17} /></a></div><div class="posts-grid">{related.map((item) => <PostCard post={item} />)}</div></section></div>
 </BaseLayout>
 <script>
@@ -61,8 +62,10 @@ const schema = {
   });
   const progress = document.querySelector<HTMLElement>('.reading-progress');
   const article = document.querySelector<HTMLElement>('.article-prose');
+  const backTop = document.querySelector<HTMLAnchorElement>('.article-back-top');
+  function updateBackTop() { backTop?.classList.toggle('is-hidden', scrollY < 120); }
   function updateProgress() { if (!progress || !article) return; const start = article.offsetTop; const total = article.offsetHeight - innerHeight; progress.style.width = `${Math.max(0, Math.min(100, (scrollY - start) / Math.max(1, total) * 100))}%`; }
-  addEventListener('scroll', updateProgress, { passive: true }); addEventListener('resize', updateProgress); updateProgress();
+  addEventListener('scroll', updateProgress, { passive: true }); addEventListener('scroll', updateBackTop, { passive: true }); addEventListener('resize', updateProgress); updateProgress(); updateBackTop();
   const headings = document.querySelectorAll('.article-prose h2, .article-prose h3');
   const observer = new IntersectionObserver((entries) => { for (const entry of entries) { if (entry.isIntersecting) { document.querySelectorAll('.toc a').forEach((link) => { const selected = decodeURIComponent(link.getAttribute('href')?.slice(1) || '') === entry.target.id; link.classList.toggle('active', selected); if (selected) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); }); } } }, { rootMargin: '-15% 0px -65% 0px' });
   headings.forEach((heading) => observer.observe(heading));
