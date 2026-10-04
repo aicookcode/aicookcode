@@ -1,6 +1,6 @@
 ---
 title: "别再手搓爬虫：4.4k Star 项目，把淘宝、小红书、闲鱼、抖音数据抓取做成 80 个 AI Skill"
-description: "搞选品和竞品分析的人，对这种场景不陌生：淘宝评论手动翻页，小红书笔记卡在登录和加载，闲鱼同款价格隔一会儿就得刷一次。"
+description: "一个开源项目，把抓淘宝小红书闲鱼数据做成了80个AI技能"
 pubDate: 2026-07-16T17:00:00+08:00
 category: "GitHub 实践"
 tags: ["爬虫", "AI Skill", "数据采集"]
@@ -22,21 +22,21 @@ Github 地址：
 
 截至我整理素材时，这个项目大概 **4.4k+ Star**。仓库里一共有 **80 个 `SKILL.md`**，其中 **78 个来自 `Solutions` 目录**。
 
-### Solutions，78 个现成抓取 Skill
+## Solutions，78 个现成抓取 Skill
 
 先看 `Solutions`。它没有停留在「支持数据抓取」这种泛泛的说法，而是拆成了一个个具体网站、具体动作，覆盖电商、获客、搜索与研究、社交监听、视频平台五类场景。
 
 比如大家熟悉的这些：
 
-1. `淘宝，关键词搜索、商品详情、评论、店铺目录。`
-2. `小红书，笔记搜索、笔记详情、用户主页、自动发布。`
-3. `闲鱼，商品搜索、商品详情，适合做二手比价和同款监控。`
-4. `抖音 / TikTok，视频详情抓取，适合做内容观察和素材整理。`
-5. `微信文章搜索，把公众号文章检索接进 Agent 工作流。`除了国内平台，`Solutions` 里也有 Google Maps、LinkedIn、YouTube 字幕和视频信息等 Skill。整体看，它覆盖的是一批高频的网站数据抓取入口。
+1. 淘宝，关键词搜索、商品详情、评论、店铺目录。
+2. 小红书，笔记搜索、笔记详情、用户主页、自动发布。
+3. 闲鱼，商品搜索、商品详情，适合做二手比价和同款监控。
+4. 抖音 / TikTok，视频详情抓取，适合做内容观察和素材整理。
+5. 微信文章搜索，把公众号文章检索接进 Agent 工作流。
+
+除了国内平台，`Solutions` 里也有 Google Maps、LinkedIn、YouTube 字幕和视频信息等 Skill。整体看，它覆盖的是一批高频的网站数据抓取入口。
 
 ![](/media/crawler-skills/img_02.jpg)
-
-↓ 下滑滚动查看完整图片
 
 ### browser-act，负责操作真实浏览器
 
@@ -54,31 +54,39 @@ Github 地址：
 
 ![alt text](/media/crawler-skills/img_03.png)
 
-### 安装和使用
+## 安装和使用
 
 将以下内容按步骤发送给你的 Agent 进行安装即可
 
-#### 第一步，先装 `browser-act` 这个核心 Skill
+### 第一步，先装 `browser-act` 这个核心 Skill
 
 它负责告诉 Agent 怎么调用 BrowserAct 的浏览器能力。
 
 ```
-帮我安装 browser-act，github 地址 [https://github.com/browser-act/skills/tree/main/browser-act](https://github.com/browser-act/skills/tree/main/browser-act)，装完验证 SKILL.md 是否存在。
+帮我安装 browser-act
+github 地址：https://github.com/browser-act/skills/tree/main/browser-act
+装完验证 SKILL.md 是否存在
 ```
 
-#### 第二步，安装 `browser-act-cli`
+### 第二步，安装 `browser-act-cli`
 
 真正打开浏览器、维持会话、执行点击和读取页面状态，靠的是它。
 
 ```
-帮我安装 browser-act-cli，安装后运行 browser-act --version 验证。
+帮我安装 browser-act-cli，安装后运行 browser-act --version 验证
 ```
 
-#### 第三步，按需求安装 `Solutions` 里的高频抓取 Skill
+### 第三步，按需求安装 `Solutions` 里的高频抓取 Skill
 
 比如你关心淘宝评论、小红书笔记、闲鱼商品，可以只装自己会用到的几个。
 
-`帮我安装 taobao-keyword-search, github 地址 [https://github.com/browser-act/skills/tree/main/solutions/ecommerce/taobao-keyword-search](https://github.com/browser-act/skills/tree/main/solutions/ecommerce/taobao-keyword-search)，装完验证 SKILL.md 是否存在。`常见的国内平台 Skill 大概是这些：
+```
+帮我安装 taobao-keyword-search
+github 地址：https://github.com/browser-act/skills/tree/main/solutions/ecommerce/taobao-keyword-search
+装完验证 SKILL.md 是否存在
+```
+
+常见的国内平台 Skill 大概是这些：
 
 1. 淘宝：`taobao-keyword-search`、`taobao-product-detail`、`taobao-product-reviews`、`taobao-shop-catalog`。
 2. 小红书：`xiaohongshu-search`、`xiaohongshu-note-detail`、`xiaohongshu-user-profile`。
@@ -86,15 +94,17 @@ Github 地址：
 4. 视频平台：`tiktok-search-videos`、`tiktok-video-detail`。
 5. 微信文章：`wechat-article-search-api-skill`。
 
-#### 制作自己的流程 Skill
+### 制作自己的流程 Skill
 
 如果现成 `Solutions` 没覆盖你的目标网站，再装 `browser-act-skill-forge`。它适合把自己的网页数据采集流程做成新 Skill，比如固定抓某个垂直网站的榜单、商品详情或评论区。
 
 ```
-帮我安装 browser-act-skill-forge，github 地址 [https://github.com/browser-act/skills/tree/main/browser-act-skill-forge](https://github.com/browser-act/skills/tree/main/browser-act-skill-forge)，装完验证 SKILL.md 是否存在。  
+帮我安装 browser-act-skill-forge
+github 地址：https://github.com/browser-act/skills/tree/main/browser-act-skill-forge
+装完验证 SKILL.md 是否存在。  
 ```
 
-#### 使用
+### 使用
 
 装好 Skill 之后，你只需要用自然语言告诉 Agent 要做什么。比如已经装了 `taobao-product-reviews`：
 
@@ -108,7 +118,7 @@ Agent 会自动调用对应 Skill，打开浏览器、加载页面、抓取数�
 
 Agent 会先探索一次网站结构，理解点击路径和数据位置，然后生成一个 `SKILL.md` 保存下来。之后你再传新链接，它就能按固定格式输出结果。
 
-### 适合谁，不适合谁
+## 适合谁，不适合谁
 
 它比较适合这几类人：
 
@@ -119,14 +129,10 @@ Agent 会先探索一次网站结构，理解点击路径和数据位置，然�
 
 但它也不是万能的。`stealth` 可以降低被识别概率，不代表所有网站都能稳定跑；遇到强登录、强风控、扫码、2FA，仍然可能需要人工接管。
 
-### 写在最后
+## 写在最后
 
 BrowserAct 值得关注的地方，是它把网站数据抓取拆成了三件事：`browser-act` 负责真实浏览器操作，`browser-act-skill-forge` 负责沉淀新流程，`Solutions` 提供 78 个现成抓取技能。
 
 如果你平时就要处理淘宝、小红书、闲鱼、抖音这类平台的数据，它至少值得收藏一下。下次再遇到一堆网页要点、一堆评论要看、一堆价格要盯，不需手动操作，也不用写爬虫。
 
-你最想让 AI 帮你自动抓哪个网站的数据？欢迎评论区留言讨论。
-
 > 最后提醒一句：本文介绍的 Skill 和工具，仅限用于合法的数据采集需求，比如你自己的店铺数据、公开的竞品分析、个人研究等。抓取他人数据时，请遵守目标网站的 robots 协议和用户协议，不要用于侵权或商业盗用。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
