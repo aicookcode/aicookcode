@@ -43,7 +43,9 @@ EvoLink.AI 提供了两种 API 请求方式：直接调用 API 接口，或安�
 
 ## 准备工作
 
-1. 注册账号需要先注册 EvoLink.AI 账号，登录控制台。2. 生成API Key在「API Keys」页面，点击「Create New Key」按钮，按需配置后生成API key。![](/media/gpt-image-2-api-project/img_04.png)3. 注意事项使用 API 生成图片会消耗 Credits 额度。所以正式使用前，建议先用低分辨率、低质量参数跑几次，确认效果和消耗都符合预期，再根据自己的需求提高分辨率或批量生成。EvoLink 新用户注册后会赠送 10 Credits 试用额度，可以先用来测试接口。我自己测试了一次：生成一张 `3:4` 比例、`1K` 分辨率、`quality=low` 的猫咪图片，大约消耗了 `0.27 Credits`4. 官方 API 平台官方文档提供了在线接口测试入口，可直接在页面中进行测试。[https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-image-generate![](/media/gpt-image-2-api-project/img_05.png)](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-image-generate![](/media/gpt-image-2-api-project/img_05.png))方式一：API 接口调用EvoLink 的 `gpt-image-2` 接口采用异步任务模式，流程如下：![](/media/gpt-image-2-api-project/img_06.png)1. 提交图像生成任务请求：需要将请求中的 `YOUR_API_KEY` 替换为你实际获取的 API Key。data 中设置图片具体参数`curl --request POST \
+1. 注册账号需要先注册 EvoLink.AI 账号，登录控制台。2. 生成API Key在「API Keys」页面，点击「Create New Key」按钮，按需配置后生成API key。![](/media/gpt-image-2-api-project/img_04.png)3. 注意事项使用 API 生成图片会消耗 Credits 额度。所以正式使用前，建议先用低分辨率、低质量参数跑几次，确认效果和消耗都符合预期，再根据自己的需求提高分辨率或批量生成。EvoLink 新用户注册后会赠送 10 Credits 试用额度，可以先用来测试接口。我自己测试了一次：生成一张 `3:4` 比例、`1K` 分辨率、`quality=low` 的猫咪图片，大约消耗了 `0.27 Credits`4. 官方 API 平台官方文档提供了在线接口测试入口，可直接在页面中进行测试。[在线接口测试入口](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-image-generate)
+
+![](/media/gpt-image-2-api-project/img_05.png)方式一：API 接口调用EvoLink 的 `gpt-image-2` 接口采用异步任务模式，流程如下：![](/media/gpt-image-2-api-project/img_06.png)1. 提交图像生成任务请求：需要将请求中的 `YOUR_API_KEY` 替换为你实际获取的 API Key。data 中设置图片具体参数`curl --request POST \
  --url [https://api.evolink.ai/v1/images/generations](https://api.evolink.ai/v1/images/generations) \
  --header 'Authorization: Bearer YOUR_API_KEY' \
  --header 'Content-Type: application/json' \
