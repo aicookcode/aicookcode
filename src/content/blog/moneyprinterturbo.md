@@ -32,6 +32,14 @@ GitHub：`https://github.com/harry0703/MoneyPrinterTurbo`
 
 #### 主题：生命的意义是什么？（竖屏）
 
+<figure>
+  <video controls playsinline preload="metadata" width="578" height="1280" poster="/media/moneyprinterturbo/video-poster.jpg" aria-label="MoneyPrinterTurbo 生命的意义竖屏视频演示">
+    <source src="/media/moneyprinterturbo/moneyprinterturbo-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/moneyprinterturbo/moneyprinterturbo-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>MoneyPrinterTurbo 生成效果：生命的意义是什么？</figcaption>
+</figure>
+
 ## 功能特性
 
 - 完整的 MVC 架构，代码结构清晰，易于维护，支持 API 和 Web 界面
@@ -71,7 +79,7 @@ Windows 用户可以优先试一键启动包，解压后直接使用（路径不
 运行成功后，一般会返回 Web 地址，在浏览器中打开即可：
 
 ```
-[http://127.0.0.1:8501](http://127.0.0.1:8501)
+http://127.0.0.1:8501
 ```
 
 ### 方法三：Docker 部署
@@ -87,13 +95,13 @@ docker compose up
 Web 界面：
 
 ```
-[http://127.0.0.1:8501](http://127.0.0.1:8501)
+http://127.0.0.1:8501
 ```
 
 API 文档：
 
 ```
-[http://127.0.0.1:8080/docs](http://127.0.0.1:8080/docs)
+http://127.0.0.1:8080/docs
 ```
 
 ## 配置方法
@@ -129,6 +137,4 @@ API 文档：
 
 ![](/media/moneyprinterturbo/img_06.jpg)
 
-我自己试着跑了一遍，整体体验还挺有意思。感兴趣的小伙伴可以去试试，也欢迎在评论区分享你生成的视频效果和使用体验。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
+我自己试着跑了一遍，整体体验还挺有意思。感兴趣的小伙伴可以去试试。

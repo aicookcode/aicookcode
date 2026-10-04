@@ -22,9 +22,16 @@ GitHub：`https://github.com/zhongerxin/Cowart`
 
 一个视频说明一切
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="1752" height="1080" poster="/media/codex-canvas-plugin/video-poster.jpg" aria-label="Cowart 标注生图与改图演示">
+    <source src="/media/codex-canvas-plugin/cowart-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/codex-canvas-plugin/cowart-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>Cowart 标注生图与改图演示</figcaption>
+</figure>
 
-> 视频来源：项目作者 @zhongerxin 的演示看完这个视频，你就会明白：这不只是个画布，而是一套**让 AI 图像创作真正“流动”起来**的工作流！
+> 视频来源：项目作者 @zhongerxin 的演示  
+> 看完这个视频，你就会明白：这不只是个画布，而是一套**让 AI 图像创作真正“流动”起来**的工作流！
 
 Cowart 基于 tldraw 实现本地无限画布，完美集成 Codex(GPT-Image-2) 的图像能力。
 
@@ -129,7 +136,3 @@ canvas/pages/<page-id>/assets/
 上线短短几天，Cowart 就已经在社区里积累了不少关注，star、fork 和 PR 也在持续增加。
 
 如果你平时也会用 GPT Image 2 做图、改图，这个项目可以收藏玩起来。
-
-欢迎在评论区聊聊你的使用体验，也可以顺手分享其他好用的工具。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*

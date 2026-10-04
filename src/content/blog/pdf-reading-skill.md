@@ -1,6 +1,6 @@
 ---
 title: "AI 读 PDF 老出错，别再怪模型了"
-description: "把一份 PDF 丢给 AI，让它帮你总结重点、回答几个问题。它答得又快又流畅，看着特别靠谱。可你一回原文核对——表格里的数字对不上，段落顺序是乱的，有几页干脆像没看见。"
+description: "把PDF丢给AI，它答得头头是道，你一对原文全是错的。很多时候不是AI笨，是文件在进AI之前就已经乱了。先花一分钟把文档整理干净，AI才读得对。"
 pubDate: 2026-07-01T18:35:17+08:00
 category: "GitHub 实践"
 tags: ["PDF", "AI 阅读", "AI Skill"]
@@ -34,7 +34,13 @@ coverAlt: "AI 读 PDF 老出错，别再怪模型了"
 
 一句话说清它干嘛：**把 PDF、图片、Word、PPT、Excel 这些乱七八糟的文档，整理成 AI 能顺畅读懂的干净文本。**标题还是标题，表格还是表格，公式尽量留在原来的位置，扫描页也会被认出来。整理好之后再交给 AI，它读到的就不再是一堆碎片，而是一份收拾干净的资料。
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="1942" height="1266" poster="/media/pdf-reading-skill/mineru-demo-1-poster.jpg" aria-label="MinerU 文档整理效果演示">
+    <source src="/media/pdf-reading-skill/mineru-demo-1.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/pdf-reading-skill/mineru-demo-1.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>MinerU 文档整理效果演示</figcaption>
+</figure>
 
 它是 OpenDataLab 开源的工具，在 GitHub 上已经被收藏了 7 万多次，说明用的人很多、认可的人也多。
 
@@ -62,7 +68,9 @@ GitHub：[https://github.com/opendatalab/MinerU](https://github.com/opendatalab/
 
 普通人用它，不需要写代码，也不用装软件，全程在网页里完成：
 
-**第一步：整理。** 打开在线整理页面，把你的 PDF 传上去，等它整理好。
+### 第一步：整理
+
+打开在线整理页面，把你的 PDF 传上去，等它整理好。
 
 在线整理地址：[https://mineru.net/OpenSourceTools/Extractor](https://mineru.net/OpenSourceTools/Extractor)上传入口：
 
@@ -72,11 +80,23 @@ GitHub：[https://github.com/opendatalab/MinerU](https://github.com/opendatalab/
 
 ![](/media/pdf-reading-skill/img_04.jpg)
 
-**第二步：复制。** 整理完，你会得到一份干净、有条理的文本，把它复制下来（也可以直接下载）。
+### 第二步：复制
+
+整理完，你会得到一份干净、有条理的文本，把它复制下来（也可以直接下载）。
 
 ![](/media/pdf-reading-skill/img_05.jpg)
 
-**第三步：交给 AI。** 把这段整理好的文本，贴进你平时用的 AI（豆包、Kimi、DeepSeek、ChatGPT 都行），再让它总结、提问、做表格。这次它读到的是整整齐齐的资料，答得比你直接丢一份 PDF 准得多。
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="2214" height="1080" poster="/media/pdf-reading-skill/mineru-demo-2-poster.jpg" aria-label="MinerU 在线整理流程演示">
+    <source src="/media/pdf-reading-skill/mineru-demo-2.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/pdf-reading-skill/mineru-demo-2.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>MinerU 在线整理流程演示</figcaption>
+</figure>
+
+### 第三步：交给 AI
+
+把这段整理好的文本，贴进你平时用的 AI（豆包、Kimi、DeepSeek、ChatGPT 都行），再让它总结、提问、做表格。这次它读到的是整整齐齐的资料，答得比你直接丢一份 PDF 准得多。
 
 说白了：**以前你把 PDF 直接喂 AI，现在中间加一步「先整理」再喂。** 就多这一步，AI 答错的概率大大降低。
 
@@ -101,11 +121,17 @@ GitHub：[https://github.com/opendatalab/MinerU](https://github.com/opendatalab/
 
 网页版适合偶尔用。如果你要**批量处理成百上千份文件**，或者文件涉及隐私、不方便传到线上，就把它装到本地跑。常见有三条路径：
 
-**1. 命令行批量跑。** `pip` 装好后，一行命令就能把一整个文件夹的 PDF 批量整理成 Markdown / JSON，适合一次处理大量资料，不用一份份手动传。
+### 1. 命令行批量跑
 
-**2. 本地部署保隐私。** 合同、财报这类敏感文件不想上传，就在自己机器上跑。项目内置命令行、REST API 和网页界面，支持 CPU / GPU / MPS 加速，Windows、Linux、Mac 都能装。
+`pip` 装好后，一行命令就能把一整个文件夹的 PDF 批量整理成 Markdown / JSON，适合一次处理大量资料，不用一份份手动传。
 
-**3. 接进你自己的 AI 应用。** 它输出的是结构化的 Markdown / JSON，表格转 HTML、公式转 LaTeX，可以直接切分、索引、检索——放在 RAG、知识库、Agent 的最前面一步，专门当文档预处理这一环。
+### 2. 本地部署保隐私
+
+合同、财报这类敏感文件不想上传，就在自己机器上跑。项目内置命令行、REST API 和网页界面，支持 CPU / GPU / MPS 加速，Windows、Linux、Mac 都能装。
+
+### 3. 接进你自己的 AI 应用
+
+它输出的是结构化的 Markdown / JSON，表格转 HTML、公式转 LaTeX，可以直接切分、索引、检索——放在 RAG、知识库、Agent 的最前面一步，专门当文档预处理这一环。
 
 这三条路背后，它把一堆脏活也顺手干了：自动去掉页眉页脚、页码、脚注，按人类阅读顺序重排，自动识别扫描件并 OCR（支持 109 种语言），还提供 layout / span 可视化，方便你核对解析质量。
 
@@ -125,7 +151,3 @@ GitHub：[https://github.com/opendatalab/MinerU](https://github.com/opendatalab/
 但真正决定 AI 答得对不对的，往往不是模型聪不聪明，而是**文件进 AI 之前，有没有被整理干净**。下次 AI 又读错了，先别急着怪它——回头看看，你喂进去的那份文件，本身是不是就乱的。
 
 拿一份你平时最头疼的 PDF，去在线版试一下，一分钟就有答案。
-
-你让 AI 读文档，最容易翻车的是表格、公式，还是扫描件？评论区聊聊。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*

@@ -1,6 +1,6 @@
 ---
 title: "GPT image 2 + Codex 强强联合：一键搭建高端网站！这个 Taste-Skill 项目太强了"
-description: "直接用 GPT Image 2 先生成高质量设计图，再让 Codex 分析图像、精准还原代码，这种“`生成图片，Codex 分析，Codex 构建网站`”的流程，能让 AI 生成的网站瞬间从“模板味”变成“产品级”。"
+description: "GPT Image 2 生成高质量设计图，Codex 分析图像、精准还原代码"
 pubDate: 2026-04-30T22:28:31+08:00
 category: "AI 应用"
 tags: ["GPT Image", "Codex", "建站", "AI Skill"]
@@ -27,7 +27,13 @@ GitHub 仓库：`https://github.com/Leonxlnx/taste-skill`这篇文章我会按�
 
 我用它生成了一个猫咖网站，出来的效果确实比普通一句话生成的网站舒服不少：页面更有层次，视觉更统一，也更像一个真实品牌页面，而不是临时拼出来的 Demo👍
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="2224" height="1080" poster="/media/taste-skill-website/video-poster.jpg" aria-label="Taste-Skill 猫咖网站生成效果演示">
+    <source src="/media/taste-skill-website/taste-skill-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/taste-skill-website/taste-skill-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>Taste-Skill 猫咖网站生成效果演示</figcaption>
+</figure>
 
 ## 核心优势
 
@@ -37,13 +43,13 @@ GitHub 仓库：`https://github.com/Leonxlnx/taste-skill`这篇文章我会按�
 
 Codex 往往能做出来。页面能打开，布局也完整，按钮、标题、图片区域都有。但问题是，它大概率看起来像“AI 默认模板”：能用，但不够有质感。
 
-Taste-Skill 的新玩法，是把流程拆成三步：
+**Taste-Skill 的新玩法，是把流程拆成三步：**
 
 1. 先用 GPT Image 2 生成专业级网站设计图。
 2. 再让 Codex 仔细分析图像里的布局、字体、间距、配色和交互。
 3. 最后输出 HTML、CSS、JS，或者适配 React、Vue、Svelte 等框架。
 
-这套流程的价值在于：
+**这套流程的价值在于：**
 
 - 页面不再完全依赖文字提示词想象。
 - 视觉目标更明确，减少“模板味”。
@@ -54,7 +60,7 @@ Taste-Skill 的新玩法，是把流程拆成三步：
 
 这个仓库不是只有一个技能，而是一整套前端生成工具箱。
 
-代码输出类：
+### 代码输出类
 
 - taste-skill：默认全能技能，适合大多数场景。不锁定单一风格，提供高端前端输出，平衡美观与实用性。
 - gpt-taste：针对 GPT / Codex 优化的激进版本，更偏现代视觉和动效。如果你想要更强的视觉冲击力，可以试这个。
@@ -66,7 +72,7 @@ Taste-Skill 的新玩法，是把流程拆成三步：
 - output-skill：输出完整性技能。防止AI输出半成品或占位符，确保生成完整的代码。
 - stitch-skill：兼容Google Stitch的技能，支持导出DESIGN.md格式的设计系统文件。
 
-图像生成类：
+### 图像生成类
 
 - **imagegen-frontend-web**：生成桌面端网站设计稿。
 - **imagegen-frontend-mobile**：生成移动端界面。
@@ -111,6 +117,4 @@ GPT Image 2、Codex 和 Taste-Skill 组合在一起，真正有意思的地方�
 
 这一步看似简单，其实很关键。因为很多网站不好看，并不是缺组件，也不是缺 CSS 技巧，而是从一开始就没有一个清晰的视觉目标。Taste-Skill 给 AI 补上的，正是这个目标。
 
-如果你经常用 Codex 做网页、原型、落地页，这个项目值得试一下。你最想用它生成哪类网站？咖啡店、SaaS 工具、个人主页，还是一个你一直想做但懒得开头的小产品？欢迎在评论区留言讨论。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
+如果你经常用 Codex 做网页、原型、落地页，这个项目值得试一下。你最想用它生成哪类网站？咖啡店、SaaS 工具、个人主页，还是一个你一直想做但懒得开头的小产品？

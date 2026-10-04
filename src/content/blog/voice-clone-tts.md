@@ -1,6 +1,6 @@
 ---
 title: "Claude 能用你的声音说话了，靠的是这个 38k Star 的开源语音项目"
-description: "你让 Claude Code 改一段代码，跑完测试后，它不再只是往终端里吐一串日志，而是直接说一句：测试通过了。声音还可以不是系统默认朗读，而是你提前设置好的声音。"
+description: "Voicebox可以准备声音、生成语音，并通过MCP接入Agent，让任务结果直接说出来。"
 pubDate: 2026-07-06T17:22:33+08:00
 category: "GitHub 实践"
 tags: ["语音克隆", "TTS", "开源项目"]
@@ -10,13 +10,13 @@ coverAlt: "Claude 能用你的声音说话了，靠的是这个 38k Star 的开�
 
 你让 Claude Code 改一段代码，跑完测试后，它不再只是往终端里吐一串日志，而是直接说一句：测试通过了。声音还可以不是系统默认朗读，而是你提前设置好的声音。
 
-这就是 Voicebox 最有意思的地方。
+这就是 **Voicebox** 最有意思的地方。
 
 它不是单纯做声音克隆，也不是又一个网页 TTS 服务。它更像是放在你电脑里的本地语音工作室：先准备声音，再把这套声音能力开放给 Claude Code、Cursor、Codex 这类支持 MCP 的 Agent。
 
 Github：[https://github.com/jamiepine/voicebox](https://github.com/jamiepine/voicebox)截至 2026 年 7 月 6 日，Voicebox 在 GitHub 上已经有 38K+ Star。对于一个今年 1 月才创建的开源项目来说，这个增长速度已经很能说明问题。
 
-### Voicebox 是什么
+## Voicebox 是什么
 
 Voicebox 是一个本地优先的开源 AI 语音工作室。
 
@@ -38,15 +38,13 @@ Voicebox 是一个本地优先的开源 AI 语音工作室。
 
 ![Voicebox MCP 开放能力](/media/voice-clone-tts/img_03.jpg)
 
-### 安装使用
+## 安装使用
 
 ### 安装
 
 打开 GitHub Releases 页面，下载对应系统的桌面安装包。下载完成后，安装并打开 Voicebox。
 
-下载地址：
-
-[https://github.com/jamiepine/voicebox/releases](https://github.com/jamiepine/voicebox/releases)
+下载地址：[https://github.com/jamiepine/voicebox/releases](https://github.com/jamiepine/voicebox/releases)
 
 ### 测试一次普通语音生成
 
@@ -129,7 +127,7 @@ curl -X POST [http://127.0.0.1:17493/speak](http://127.0.0.1:17493/speak) \
 
 Agent、脚本、自动化流程，都可以把需要播报的内容交给它。
 
-### 其他功能
+## 其他功能
 
 ### 语音输入
 
@@ -145,18 +143,8 @@ Voicebox 还有 Stories 编辑器，偏内容创作场景。它可以把不同�
 
 ![Voicebox Stories 编辑器](/media/voice-clone-tts/img_04.jpg)
 
-### 现在还不算成熟
+## 写在最后
 
 Voicebox 是今年 1 月才创建的新项目，GitHub 关注度涨得很快，功能和兼容性也还在持续调整。Issue 里还能看到模型加载、GPU 适配、听写粘贴、MCP 兼容、长音频转写等真实问题。
 
 它现在还不是那种下载后就能稳定投入团队生产的成熟商业软件，但如果你想体验 Agent 语音输出，或者把声音克隆、语音输入、自动化播报这些能力放回自己的电脑里，已经很值得试。
-
-### 写在最后
-
-Voicebox 最有意思的地方，是把声音这件事从单纯的“生成一段音频”，往前推到了 Agent 工作流里。
-
-以前给 Agent 接工具，是让它会查资料、会写代码、会操作文件。现在给它接 Voicebox，是让它在需要的时候开口说话。
-
-如果你平时用 Claude Code、Cursor 或其他支持 MCP 的 Agent，你最想让它在什么时候开口提醒你？欢迎评论区留言讨论。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*

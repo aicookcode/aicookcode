@@ -1,6 +1,6 @@
 ---
 title: "一句就能生成可编辑图表，AI 画图工具来了！"
-description: "画架构图、流程图、系统设计图时，你可能也遇到过这种情况：系统关系明明已经想清楚了，一打开空白画布，还得手动拖形状、调连线、对齐层级，半小时很快就过去。"
+description: "AI大模型和经典的draw.io完美结合，让你通过聊天就能生成、修改和优化各种图表!"
 pubDate: 2026-06-23T07:30:00+08:00
 category: "GitHub 实践"
 tags: ["图表生成", "AI 画图", "开源项目"]
@@ -18,13 +18,17 @@ GitHub（32.2K+ Stars）：`https://github.com/DayuanJiang/next-ai-draw-io`
 
 ## 项目简介
 
-## next-ai-draw-io
-
-是一个基于 Next.js 开发的 Web 应用（支持在线版和桌面端，提供 MCP Server），它在 draw.io 的基础上深度集成了 AI 能力。
+**next-ai-draw-io** 是一个基于 Next.js 开发的 Web 应用（支持在线版和桌面端，提供 MCP Server），它在 draw.io 的基础上深度集成了 AI 能力。
 
 可以直接用自然语言描述需求，AI 会生成 draw.io 格式的 XML 图表，并在画布里实时渲染出来。生成结果会进入 draw.io 体系，后续可以方便地编辑、调整和导出。
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="2038" height="1080" poster="/media/ai-chart-generator/natural-language-poster.jpg" aria-label="next-ai-draw-io 自然语言生成图表演示">
+    <source src="/media/ai-chart-generator/natural-language-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/ai-chart-generator/natural-language-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>next-ai-draw-io 自然语言生成图表演示</figcaption>
+</figure>
 
 除了文本提示，还可以上传图片、PDF 或文本文件，让 AI 理解现有内容并生成或优化图表。
 
@@ -48,7 +52,7 @@ GitHub（32.2K+ Stars）：`https://github.com/DayuanJiang/next-ai-draw-io`
 可以直接打开在线体验：
 
 ```
-[https://next-ai-drawio.jiang.jp/](https://next-ai-drawio.jiang.jp/)
+https://next-ai-drawio.jiang.jp/
 ```
 
 ### 桌面版
@@ -56,7 +60,7 @@ GitHub（32.2K+ Stars）：`https://github.com/DayuanJiang/next-ai-draw-io`
 不熟悉代码的话，可以直接下载桌面版使用
 
 ```
-[https://github.com/DayuanJiang/next-ai-draw-io/releases](https://github.com/DayuanJiang/next-ai-draw-io/releases)
+https://github.com/DayuanJiang/next-ai-draw-io/releases
 ```
 
 ### 本地项目运行
@@ -64,7 +68,7 @@ GitHub（32.2K+ Stars）：`https://github.com/DayuanJiang/next-ai-draw-io`
 如果想研究项目实现，或者自己部署，可以把代码下载到本地运行。
 
 ```
-git clone [https://github.com/DayuanJiang/next-ai-draw-io](https://github.com/DayuanJiang/next-ai-draw-io)
+git clone https://github.com/DayuanJiang/next-ai-draw-io
 cd next-ai-draw-io
 npm install
 cp env.example .env.local
@@ -74,7 +78,7 @@ npm run dev
 启动后打开：
 
 ```
-[http://localhost:6002](http://localhost:6002)
+http://localhost:6002
 ```
 
 ### MCP 接入
@@ -131,7 +135,9 @@ Create a flowchart showing user authentication with login, MFA, and session mana
 连线不得穿过、覆盖或压住任何元素块和文字。
 优先按从左到右、从上到下的流程组织内容，减少交叉线。
 整体呈现为清晰、专业、易读的架构图。
-```生成效果：
+```
+
+生成效果：
 
 ![](/media/ai-chart-generator/img_05.png)
 
@@ -139,7 +145,13 @@ Create a flowchart showing user authentication with login, MFA, and session mana
 
 如果已经有旧图，可以上传图片或已有图表，让 AI 复制结构、补充说明、调整布局。这个用法很适合整理过期架构图，或者把别人发来的粗糙流程图改成可维护的 draw.io 文件。
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="1694" height="1080" poster="/media/ai-chart-generator/old-diagram-redraw-poster.jpg" aria-label="next-ai-draw-io 旧图重绘演示">
+    <source src="/media/ai-chart-generator/old-diagram-redraw-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/ai-chart-generator/old-diagram-redraw-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>next-ai-draw-io 旧图重绘演示</figcaption>
+</figure>
 
 ## 适用场景
 
@@ -155,6 +167,4 @@ Create a flowchart showing user authentication with login, MFA, and session mana
 
 在 AI 原生工具越来越普及的今天，next-ai-draw-io 把「说一句就出图」的效率带到了图表领域，大幅降低了可视化沟通的门槛。它不仅是 draw.io 的升级版，更是一个 **AI 驱动的生产力工具**。
 
-这篇可以先收藏起来，下次需要画图时直接试一版。 你平时常用什么画图工具？也欢迎在评论区分享。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
+这篇可以先收藏起来，下次需要画图时直接试一版。 你平时常用什么画图工具？

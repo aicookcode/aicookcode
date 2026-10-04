@@ -1,6 +1,6 @@
 ---
 title: "输入网址，AI 直接复刻出完整网站"
-description: "最近前端圈被一个开源项目刷屏了：Open Lovable 。它由知名网页抓取工具 Firecrawl 团队推出，上线短短几天就收获上万 Star，现在已经超过 26k Star，堪称 2026 年最火的 AI + 前端开源项目之一。"
+description: "一键克隆并重建任意网站，秒变现代React应用"
 pubDate: 2026-06-18T07:30:00+08:00
 category: "GitHub 实践"
 tags: ["网站复刻", "AI 编程", "开源项目"]
@@ -16,11 +16,15 @@ GitHub：`https://github.com/firecrawl/open-lovable`
 
 **`一句话总结：输入任何网站的 URL，它能在几分钟内完整复刻出一个几乎相同的 React 现代网页应用，包括复杂布局、样式和基础交互。`**
 
-> 🎬 原文此处为视频演示
+<figure>
+  <video class="article-video-landscape" controls playsinline preload="metadata" width="2210" height="1080" poster="/media/website-clone-ai/video-poster.jpg" aria-label="Open Lovable 网站复刻效果演示">
+    <source src="/media/website-clone-ai/website-clone-demo.mp4" type="video/mp4" />
+    你的浏览器暂不支持视频播放，可以<a href="/media/website-clone-ai/website-clone-demo.mp4">下载视频</a>观看。
+  </video>
+  <figcaption>Open Lovable 网站复刻效果演示</figcaption>
+</figure>
 
-## 实现流程
-
-：Firecrawl 负责抓取网页内容和截图，AI 负责生成代码，Vercel Sandbox 或 E2B 负责运行预览。生成后还可以继续在聊天窗口里改页面，比如换风格、改区块、补组件。
+**实现流程**：Firecrawl 负责抓取网页内容和截图，AI 负责生成代码，Vercel Sandbox 或 E2B 负责运行预览。生成后还可以继续在聊天窗口里改页面，比如换风格、改区块、补组件。
 
 ![](/media/website-clone-ai/img_01.jpg)
 
@@ -47,7 +51,7 @@ pnpm install # or npm install / yarn install
 
 ### 2. 配置 `.env.local` 文件
 
-## 填入必要的 API Key
+**填入必要的 API Key**
 
 - **FIRECRAWL_API_KEY**：用于抓取复刻网页的内容和截图。在 firecrawl.dev 获取，免费额度是 1000 credits，生成视频里的一个页面大约消耗 20 credits，大家可以据此估算。
 
@@ -113,6 +117,4 @@ pnpm dev
 
 之前为了复刻一个平台，和组里的小伙伴们折腾了很久。要是早点遇到这个项目，应该能省下不少时间，也少走很多弯路。
 
-感兴趣的朋友可以先收藏起来试用一下，欢迎在评论区留言交流。
-
-*本文原载于微信公众号「AI煮代码汤」，经作者整理后发布于本站。*
+感兴趣的朋友可以先收藏起来试用一下。
