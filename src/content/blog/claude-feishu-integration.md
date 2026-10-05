@@ -7,7 +7,7 @@ tags: ["飞书", "Claude Code", "Codex", "效率"]
 cover: "/media/claude-feishu-integration/cover.jpg"
 coverAlt: "把 Claude Code / Codex 接入飞书，让你的工作变轻松"
 featured: true
-featuredOrder: 4
+featuredOrder: 2
 ---
 
 现在越来越多人在用 **Claude Code、Codex**，但国内团队的工作大多发生在飞书：需求文档、群聊、评论和会议记录。
