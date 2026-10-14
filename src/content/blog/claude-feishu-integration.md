@@ -2,12 +2,12 @@
 title: "把 Claude Code / Codex 接入飞书，让你的工作变轻松"
 description: "让本地 Agent 进入真实协作流程"
 pubDate: 2026-08-18T19:17:19+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "GitHub 实践"
 tags: ["飞书", "Claude Code", "Codex", "效率"]
 cover: "/media/claude-feishu-integration/cover.jpg"
 coverAlt: "把 Claude Code / Codex 接入飞书，让你的工作变轻松"
-featured: true
-featuredOrder: 2
+featured: false
 ---
 
 现在越来越多人在用 **Claude Code、Codex**，但国内团队的工作大多发生在飞书：需求文档、群聊、评论和会议记录。

@@ -2,10 +2,13 @@
 title: "Agent Loop 使用指南：普通人也能轻松让AI提升效率"
 description: "给AI一个明确的目标、验证标准和停止条件，让它自己迭代、检查、改进，直到达成目标，而你不用每步都盯着。"
 pubDate: 2026-06-26T19:06:17+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "AI 应用"
 tags: ["Agent Loop", "效率", "AI 应用"]
 cover: "/media/agent-loop-guide/cover.jpg"
 coverAlt: "Agent Loop 使用指南：普通人也能轻松让AI提升效率"
+featured: true
+featuredOrder: 4
 ---
 
 大家好，我是你的AI效率助手。今天我们来聊聊最近AI圈里热门的“Loop”（循环）概念。

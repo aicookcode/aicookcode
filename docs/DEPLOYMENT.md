@@ -211,6 +211,8 @@ https://aicookcode.com/about/
 
 ### 7.5 新文章的收录流程
 
+文章时间统一维护在 Markdown 的 frontmatter 中：`pubDate` 是原始发布时间，页面仍显示该日期；发生重要内容修改时填写真实的 `updatedDate`。文章结构化数据的 `dateModified` 和 sitemap 的 `lastmod` 均优先使用 `updatedDate`，未填写时使用 `pubDate`。页面不额外显示“最后更新于”。文章的 sitemap 时间自动读取，无需再在 `astro.config.mjs` 中重复登记；首页和列表页的重要改动仍在配置中单独记录固定时间，不随每次构建刷新。
+
 1. 在 `src/content/blog/` 复制或新建 Markdown 文件。
 2. 修改文件名 slug、`title`、`description`、`pubDate`、封面、标签和正文。
 3. 确认 `draft: false`，并且 `pubDate` 不晚于构建日期。
@@ -220,6 +222,8 @@ https://aicookcode.com/about/
 7. 必要时在 URL inspection 中点击 `Request indexing`。
 
 提交 sitemap 不保证立即收录；不要频繁重复提交同一个 URL，也不要使用重复 URL、隐藏文字或其他方式强行提高收录。删除归档路由后，旧的 `/tags/.../` 地址可能会在 Search Console 中暂时显示为 404，这是预期的退出过程；不要为了消除这类历史记录把它们重新加入 sitemap。
+
+`/tags/Vibe%20Coding/` 和 `/tags/小程序发布/` 都是主动删除的标签归档，继续返回 404，不新建替代标签页或专题，也不为清空报告而重定向。Google 可能继续抓取已知旧地址，Search Console 中显示这些地址不代表页面仍存在或必须恢复；确认 sitemap 和站内链接不再包含它们即可。文章抓取优化独立推进。
 
 ## 8. 常见问题
 

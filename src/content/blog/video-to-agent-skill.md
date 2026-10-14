@@ -2,6 +2,7 @@
 title: "Agent 看不了视频？这个 Skill 把画面拆给它看"
 description: "让Claude Code、Codex、Cursor等Agent不再只靠字幕猜视频内容"
 pubDate: 2026-07-23T07:00:00+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "GitHub 实践"
 tags: ["视频理解", "AI Skill", "Agent"]
 cover: "/media/video-to-agent-skill/cover.jpg"
@@ -120,6 +121,8 @@ https://github.com/bradautomates/claude-video
 它适合把视频变成 Agent 可处理的上下文，不适合替代专业视频理解系统。
 
 ## 写在最后
+
+视频提供了任务上下文，下一步还需要明确目标和验收条件。如果你希望 Agent 分析录屏后继续检查、改进结果，可以参考 [Agent Loop 使用指南](/articles/agent-loop-guide/)，先设定验证标准和最大迭代次数。
 
 过去我们给 Agent 的材料，大多是文字。`claude-video` 将视频也拆成了 **Agent 能处理的材料**，让它能看到关键画面。它不是什么一步到位的未来，更像一个今天就能装上试试的小零件：让 Agent **少猜一点，多看一点**。
 
