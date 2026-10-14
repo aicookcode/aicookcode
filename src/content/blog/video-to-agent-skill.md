@@ -2,6 +2,7 @@
 title: "Agent 看不了视频？这个 Skill 把画面拆给它看"
 description: "让Claude Code、Codex、Cursor等Agent不再只靠字幕猜视频内容"
 pubDate: 2026-07-23T07:00:00+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "GitHub 实践"
 tags: ["视频理解", "AI Skill", "Agent"]
 cover: "/media/video-to-agent-skill/cover.jpg"

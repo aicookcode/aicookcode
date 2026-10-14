@@ -211,6 +211,8 @@ https://aicookcode.com/about/
 
 ### 7.5 新文章的收录流程
 
+文章时间统一维护在 Markdown 的 frontmatter 中：`pubDate` 是原始发布时间，页面仍显示该日期；发生重要内容修改时填写真实的 `updatedDate`。文章结构化数据的 `dateModified` 和 sitemap 的 `lastmod` 均优先使用 `updatedDate`，未填写时使用 `pubDate`。页面不额外显示“最后更新于”。文章的 sitemap 时间自动读取，无需再在 `astro.config.mjs` 中重复登记；首页和列表页的重要改动仍在配置中单独记录固定时间，不随每次构建刷新。
+
 1. 在 `src/content/blog/` 复制或新建 Markdown 文件。
 2. 修改文件名 slug、`title`、`description`、`pubDate`、封面、标签和正文。
 3. 确认 `draft: false`，并且 `pubDate` 不晚于构建日期。

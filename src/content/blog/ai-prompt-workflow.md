@@ -2,6 +2,7 @@
 title: "让 AI 编程更可靠：把任务写成可验证的步骤"
 description: "目标、上下文、约束和验收条件，比一句“帮我写代码”更能帮助你得到可维护的结果。"
 pubDate: 2026-04-01T01:00:00+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "AI 应用"
 tags: ["AI 编程", "工作流"]
 cover: "/images/code.jpg"

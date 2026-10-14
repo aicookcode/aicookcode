@@ -2,6 +2,7 @@
 title: "把 Claude Code / Codex 接入飞书，让你的工作变轻松"
 description: "让本地 Agent 进入真实协作流程"
 pubDate: 2026-08-18T19:17:19+08:00
+updatedDate: 2026-10-14T04:27:00Z
 category: "GitHub 实践"
 tags: ["飞书", "Claude Code", "Codex", "效率"]
 cover: "/media/claude-feishu-integration/cover.jpg"
