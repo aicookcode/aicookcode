@@ -1,7 +1,7 @@
 ---
 title: "请设计师太贵、自己做太丑？这个 1.8K Star 的 Skill 让 AI 按专业流程给你做 logo"
 description: "kaankiziltug/logo-design-skill：给 Claude、Codex 等 AI Agent 装上专业 logo 设计能力，从需求访谈到 SVG 成品，附 1400+ 真实 logo 参考库。"
-pubDate: 2026-10-05T10:00:00+08:00
+pubDate: 2026-10-03T10:00:00+08:00
 category: "GitHub 实践"
 tags: ["Logo 设计", "Agent Skill", "Claude", "品牌"]
 cover: "/media/logo-design-skill/cover.jpg"

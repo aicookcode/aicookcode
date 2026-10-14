@@ -6,6 +6,8 @@ category: "AI 应用"
 tags: ["Agent Loop", "效率", "AI 应用"]
 cover: "/media/agent-loop-guide/cover.jpg"
 coverAlt: "Agent Loop 使用指南：普通人也能轻松让AI提升效率"
+featured: true
+featuredOrder: 4
 ---
 
 大家好，我是你的AI效率助手。今天我们来聊聊最近AI圈里热门的“Loop”（循环）概念。
