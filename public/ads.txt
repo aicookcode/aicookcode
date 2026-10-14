@@ -1,0 +1,4 @@
+# ads.txt — 授权数字广告卖方声明
+# AdSense 审核通过后，把下一行的 pub-XXXXXXXXXXXXXXXX 替换成你的 AdSense 发布商 ID，然后重新部署。
+# 发布商 ID 在 AdSense 后台 “账号 > 账号信息” 里查看，格式如 pub-1234567890123456。
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f4284436
