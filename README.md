@@ -46,6 +46,7 @@ src/pages/                 静态路由、RSS 与搜索索引
 src/styles/global.css      响应式样式与主题
 public/images/             本地封面素材
 public/_headers            Cloudflare 响应头
+public/_redirects          历史图标地址的 301 跳转
 ```
 
 ## 新增文章

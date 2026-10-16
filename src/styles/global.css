@@ -49,9 +49,9 @@
 
 /* Brand images share a fixed height so their top and bottom edges align. */
 .brand{align-items:center;gap:10px;line-height:1}
-.brand-logo{height:60px;width:auto;max-width:none;display:block;flex:none;object-fit:contain}
-.footer-top .brand-logo{height:30px}
-@media(max-width:760px){.brand{gap:8px}.brand-logo{height:36px}}
+.brand-logo{height:80px;width:auto;max-width:none;display:block;flex:none;object-fit:contain}
+.footer-top .brand-logo{height:50px}
+@media(max-width:760px){.brand{gap:8px}.brand-logo{height:56px}}
 
 /* Reserved contact channels stay visible without linking to generic profiles. */
 .article-hero-contain{object-fit:contain;background:var(--surface-soft)}

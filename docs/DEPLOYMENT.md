@@ -62,6 +62,14 @@ Cloudflare 界面入口可能调整，以官方说明为准：https://developers
 
 官方说明：https://developers.cloudflare.com/pages/configuration/custom-domains/
 
+### 已移除标签与图标路径
+
+旧标签页是主动移除的内容，`/tags/Vibe%20Coding/`、`/tags/阿里云/`、`/tags/小程序发布/` 继续返回真实 404，不新增专题或跳转到文章。旧地址仍可能被搜索引擎、外链或自动扫描访问；历史 404 记录不需要通过恢复页面来清零。
+
+`public/favicon.ico` 是由现有 PNG 转换的多尺寸图标（16、24、32、48、64、128、256 像素），HTML 标签页图标引用它，类型使用 `image/x-icon`。`public/favicon.png` 保留给结构化数据及历史请求使用，两个文件都直接返回 200。更新 PNG 后，应同步重新生成 ICO。
+
+`public/_redirects` 只把 `/favicon.svg` 以 HTTP 301 跳转到 `/favicon.png`，不重定向 `/favicon.ico`。该文件会复制到 `dist/_redirects`，由 Cloudflare Pages 在部署后执行。`npm run preview` 不执行 Pages 跳转规则，可使用 `wrangler pages dev dist` 验证。
+
 ### `www` 重定向到根域名
 
 推荐结构是：

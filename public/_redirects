@@ -1,0 +1,2 @@
+# Keep the unused SVG path compatible; ICO and PNG are served directly.
+/favicon.svg /favicon.png 301
