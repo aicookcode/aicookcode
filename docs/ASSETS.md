@@ -12,3 +12,9 @@
 `ai-cover.png`、`github-cover.png` 和 `astro-cover.png` 为本项目绘制的流程封面，表达文章讨论的实际技术流程，不是软件运行截图。品牌名称归各自所有者。
 
 界面图标来自 Lucide（ISC 许可）。站点标识由代码符号构成。DM Sans 与 Noto Sans SC 来自 Google Fonts（SIL Open Font License），可在各自字体项目查看授权。
+
+
+## ui-assets-skill 文章
+
+正文截图位于 public/media/ui-assets-skill/，由作者本地文章目录导入。cover.png 使用内置 imagegen 工具生成，为从 UI 设计稿提取素材的概念封面，并非实际软件截图。
+
