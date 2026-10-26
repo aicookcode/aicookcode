@@ -26,6 +26,7 @@ npm run preview  # 本地预览生产构建
 - 浏览器端全文搜索，支持标题、摘要、标签、分类与 Markdown 正文；按标题和标签加权排序。
 - 分类筛选、深浅主题、本地保存主题偏好、移动端导航与键盘可访问搜索弹窗。
 - RSS、站点地图、robots.txt、canonical、Open Graph、文章结构化数据。
+- 文章前后步骤和按相关性排序的推荐；生产域 GA4 有效阅读与交互事件，并提供浏览器级自访排除。
 - 隐私政策、服务条款、免责声明和联系页面，方便长期运营与广告审核。
 - GitHub Actions 类型检查和生产构建，Cloudflare Pages 静态缓存与响应头。
 - 10 篇可编辑的原创文章；第三方开源项目已明确标注归属。
@@ -81,7 +82,7 @@ draft: false
 
 `src/config/site.ts` 的 `githubUrl` 指向本站公开仓库，用于导航、作者归属和结构化数据；`author` 与 `authorUrl` 用于统一文章作者身份。根首页的 Email、X、Wechat、Telegram 也集中配置在同一文件的 `contact` 对象中；Wechat 使用微信号展示，X 和 Telegram 使用完整个人主页链接。
 
-详细步骤见 [部署说明](docs/DEPLOYMENT.md)。Cloudflare Pages 只需要绑定 `aicookcode.com` 一个自定义域名。Cloudflare Pages 使用：
+详细步骤见 [部署说明](docs/DEPLOYMENT.md)，搜索审计对应的事件定义与上线待办见 [SEO 验证说明](docs/SEO.md)。Cloudflare Pages 只需要绑定 `aicookcode.com` 一个自定义域名。Cloudflare Pages 使用：
 
 | 配置 | 值 |
 | --- | --- |

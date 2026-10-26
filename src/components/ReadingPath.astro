@@ -1,0 +1,20 @@
+---
+import { learningPaths } from '../config/learning-paths';
+import { postPath, type Post } from '../lib/posts';
+interface Props { post: Post; posts: Post[]; }
+const { post, posts } = Astro.props;
+const path = learningPaths.find((path) => path.steps.some((step) => step.id === post.id));
+const steps = path?.steps.flatMap((step) => {
+  const entry = posts.find((item) => item.id === step.id);
+  return entry ? [entry] : [];
+}) ?? [];
+const current = steps.findIndex((item) => item.id === post.id);
+---
+{path && steps.length > 1 && <nav class="reading-path" aria-label="推荐阅读顺序">
+  <p>学习路线：{path.title}</p>
+  <ol>{steps.map((item) => <li>{item.id === post.id ? <span aria-current="step">{item.data.title}（本文）</span> : <a href={postPath(item)}>{item.data.title}</a>}</li>)}</ol>
+  <div class="reading-path-neighbors">
+    {current > 0 && <a href={postPath(steps[current - 1])}>上一步：{steps[current - 1].data.title}</a>}
+    {current < steps.length - 1 && <a href={postPath(steps[current + 1])}>下一步：{steps[current + 1].data.title}</a>}
+  </div>
+</nav>}

@@ -1,0 +1,77 @@
+<!-- Only the canonical production host collects analytics. The preference is per browser. -->
+<script is:inline>
+  (() => {
+    const preference = new URLSearchParams(location.search).get('analytics');
+    let disabled = preference === 'off';
+    try {
+      if (preference === 'off') localStorage.setItem('analytics-disabled', 'true');
+      if (preference === 'on') localStorage.removeItem('analytics-disabled');
+      disabled = localStorage.getItem('analytics-disabled') === 'true';
+    } catch { /* An explicit opt-out still works when browser storage is unavailable. */ }
+    if (location.hostname !== 'aicookcode.com' || disabled) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-DPEF8K5DH3');
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DPEF8K5DH3';
+    document.head.append(script);
+  })();
+</script>
+<script>
+  import { trackEvent } from '../lib/analytics';
+
+  document.addEventListener('click', (event) => {
+    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
+    if (!link) return;
+    const url = new URL(link.href);
+    if (url.origin === location.origin && url.pathname === '/rss.xml') {
+      trackEvent('rss_subscribe_click');
+    } else if (url.protocol === 'mailto:') {
+      trackEvent('contact_click', { contact_method: 'email' });
+    } else if (['x.com', 't.me'].includes(url.hostname)) {
+      trackEvent('contact_click', { contact_method: url.hostname === 'x.com' ? 'x' : 'telegram' });
+    } else if (url.hostname === 'github.com' && url.pathname.split('/').filter(Boolean).length >= 2) {
+      // Exclude profile links; do not send the destination query or arbitrary link text.
+      trackEvent('project_visit', { link_domain: url.hostname, project_path: url.pathname });
+    }
+  });
+
+  const content = document.querySelector<HTMLElement>('[data-article-content]');
+  if (content) {
+    let activeMilliseconds = 0;
+    let lastTick = performance.now();
+    let wasActive = document.visibilityState === 'visible' && document.hasFocus();
+    let sent = false;
+    const checkReading = () => {
+      const now = performance.now();
+      const active = document.visibilityState === 'visible' && document.hasFocus();
+      // Count foreground time only; avoid counting suspended tabs or device sleep.
+      if (wasActive && active) activeMilliseconds += Math.min(now - lastTick, 1500);
+      lastTick = now;
+      wasActive = active;
+      const bounds = content.getBoundingClientRect();
+      const reached = bounds.height > 0 && innerHeight >= bounds.top + bounds.height * 0.75;
+      if (!sent && active && activeMilliseconds >= 60_000 && reached) {
+        sent = true;
+        trackEvent('article_read', {
+          article_id: content.dataset.articleId ?? '',
+          active_seconds: Math.floor(activeMilliseconds / 1000),
+          read_percent: 75,
+        });
+        clearInterval(timer);
+        removeEventListener('scroll', checkReading);
+        document.removeEventListener('visibilitychange', checkReading);
+        removeEventListener('focus', checkReading);
+        removeEventListener('blur', checkReading);
+      }
+    };
+    const timer = setInterval(checkReading, 1000);
+    addEventListener('scroll', checkReading, { passive: true });
+    document.addEventListener('visibilitychange', checkReading);
+    addEventListener('focus', checkReading);
+    addEventListener('blur', checkReading);
+  }
+</script>
