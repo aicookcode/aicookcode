@@ -9,6 +9,7 @@ import { Search, X, ArrowUpRight } from '@lucide/astro';
   <div class="search-bottom"><span>AICookCode / 站内搜索</span><ArrowUpRight size={15} /></div>
 </dialog>
 <script>
+  import { trackEvent } from '../lib/analytics';
   type SearchPost = { title: string; description: string; category: string; tags: string[]; url: string; body: string };
   const dialog = document.querySelector<HTMLDialogElement>('#search-dialog')!;
   const input = document.querySelector<HTMLInputElement>('#search-input')!;
@@ -17,10 +18,12 @@ import { Search, X, ArrowUpRight } from '@lucide/astro';
   let posts: SearchPost[] | null = null;
   let loading: Promise<SearchPost[]> | null = null;
   let opener: HTMLElement | null = null;
+  let analyticsTimer: ReturnType<typeof setTimeout>;
+  let lastTrackedQuery = '';
   async function search() {
     results.replaceChildren();
     const query = input.value.trim().toLocaleLowerCase();
-    if (!query) { status.textContent = '输入关键词，发现一篇好文章。'; return; }
+    if (!query) { lastTrackedQuery = ''; status.textContent = '输入关键词，发现一篇好文章。'; return; }
     status.textContent = '正在搜索…';
     try {
       if (!posts) {
@@ -41,6 +44,13 @@ import { Search, X, ArrowUpRight } from '@lucide/astro';
         const description = document.createElement('p'); description.textContent = post.description;
         link.append(category, title, description); results.append(link);
       });
+      // Count a settled search, not every keystroke. The query stays in the browser.
+      clearTimeout(analyticsTimer);
+      analyticsTimer = setTimeout(() => {
+        if (!dialog.open || input.value.trim().toLocaleLowerCase() !== query || lastTrackedQuery === query) return;
+        lastTrackedQuery = query;
+        trackEvent('site_search', { result_count: matches.length, query_length: Math.min(query.length, 100) });
+      }, 600);
     } catch {
       loading = null;
       status.textContent = '暂时无法加载搜索，请稍后重试。';
@@ -51,10 +61,10 @@ import { Search, X, ArrowUpRight } from '@lucide/astro';
   }));
   document.querySelector('[data-search-close]')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (event) => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } });
-  dialog.addEventListener('close', () => { document.body.classList.remove('dialog-open'); opener?.focus(); });
+  dialog.addEventListener('close', () => { clearTimeout(analyticsTimer); document.body.classList.remove('dialog-open'); opener?.focus(); });
   document.addEventListener('keydown', (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key === 'k') { event.preventDefault(); opener = document.activeElement as HTMLElement; if (!dialog.open) { dialog.showModal(); document.body.classList.add('dialog-open'); input.focus(); } }
   });
   let timer: ReturnType<typeof setTimeout>;
-  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(search, 120); });
+  input.addEventListener('input', () => { clearTimeout(timer); clearTimeout(analyticsTimer); timer = setTimeout(search, 120); });
 </script>

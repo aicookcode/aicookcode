@@ -11,7 +11,9 @@
 
 `ai-cover.png`、`github-cover.png` 和 `astro-cover.png` 为本项目绘制的流程封面，表达文章讨论的实际技术流程，不是软件运行截图。品牌名称归各自所有者。
 
-界面图标来自 Lucide（ISC 许可）。站点标识由代码符号构成。DM Sans 与 Noto Sans SC 来自 Google Fonts（SIL Open Font License），可在各自字体项目查看授权。
+界面图标来自 Lucide（ISC 许可），品牌图片保存在 `public/logoImage/`。页面使用系统字体，不加载 Google Fonts。
+
+生产构建由 `integrations/optimize-images.mjs` 生成响应式 WebP，涵盖模板与 Markdown 正文中的本地静态图片。原文件不覆盖、不删除，历史图片与下载地址仍然可用；动图与二维码保留原始像素文件。生成的图片位于 `dist/_astro/`，按原图内容、处理版本与尺寸命名，可使用不可变缓存；缓存位于 Astro cacheDir 下。统计输出到忽略提交的 `test-results/image-optimization.json`。
 
 
 ## ui-assets-skill 文章

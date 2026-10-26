@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import optimizeImages from './integrations/optimize-images.mjs';
 
 // Keep sitemap lastmod aligned with deliberate editorial updates, not every build.
 // Listing pages have their own editorial dates; articles use their frontmatter.
@@ -54,7 +55,7 @@ export default defineConfig({
       const lastmod = recentlyUpdatedPages.get(new URL(item.url).pathname);
       return lastmod ? { ...item, lastmod } : item;
     },
-  })],
+  }), optimizeImages()],
   markdown: {
     shikiConfig: { theme: 'github-dark', wrap: false },
   },

@@ -82,7 +82,7 @@ draft: false
 
 `src/config/site.ts` 的 `githubUrl` 指向本站公开仓库，用于导航、作者归属和结构化数据；`author` 与 `authorUrl` 用于统一文章作者身份。根首页的 Email、X、Wechat、Telegram 也集中配置在同一文件的 `contact` 对象中；Wechat 使用微信号展示，X 和 Telegram 使用完整个人主页链接。
 
-详细步骤见 [部署说明](docs/DEPLOYMENT.md)，搜索审计对应的事件定义与上线待办见 [SEO 验证说明](docs/SEO.md)。Cloudflare Pages 只需要绑定 `aicookcode.com` 一个自定义域名。Cloudflare Pages 使用：
+详细步骤见 [部署说明](docs/DEPLOYMENT.md)，搜索审计对应的事件定义与上线待办见 [SEO 验证说明](docs/SEO.md)，第二轮图片、字体和性能验证见 [性能优化记录](docs/PERFORMANCE.md)。Cloudflare Pages 只需要绑定 `aicookcode.com` 一个自定义域名。Cloudflare Pages 使用：
 
 | 配置 | 值 |
 | --- | --- |
@@ -97,7 +97,7 @@ draft: false
 
 ## 素材与字体
 
-封面图片本地保存，不在运行时请求 Unsplash。来源及许可链接见 [素材说明](docs/ASSETS.md)。页面字体使用 Google Fonts 的 DM Sans 和 Noto Sans SC，网络不可达时会使用系统字体；此请求会连接 Google 的字体服务。需要完全无第三方请求时，可移除 CSS 顶部的字体导入或自行托管字体。
+封面图片本地保存，不在运行时请求 Unsplash。生产构建会自动为组件封面、品牌图和 Markdown 正文图片生成响应式 WebP，提供 srcset/sizes、真实尺寸和懒加载；原图地址保留。开发模式保留原图，检查压缩效果请运行 `npm run build` 与 `npm run preview`。来源及许可链接见 [素材说明](docs/ASSETS.md)。页面使用系统字体，不再请求 Google Fonts。
 
 ## 许可
 
