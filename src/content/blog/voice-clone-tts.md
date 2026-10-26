@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "Claude 能用你的声音说话了，靠的是这个 38k Star 的开源语音项目"
 description: "Voicebox可以准备声音、生成语音，并通过MCP接入Agent，让任务结果直接说出来。"
 pubDate: 2026-07-06T17:22:33+08:00

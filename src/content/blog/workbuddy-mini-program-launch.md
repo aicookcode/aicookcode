@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "WorkBuddy 微信小程序上线：真机测试、体验版与审核发布"
 description: "从真机预览、体验版权限和代码上传，到提交审核与正式发布，完整记录 WorkBuddy 小程序上线流程。"
 pubDate: 2026-08-24T00:00:00+08:00
@@ -7,8 +8,6 @@ category: "AI 应用"
 tags: ["WorkBuddy", "微信小程序", "小程序发布", "AI 编程"]
 cover: "/media/workbuddy-mini-program-launch/cover.jpg"
 coverAlt: "WorkBuddy 微信小程序上线阶段文章封面"
-featured: true
-featuredOrder: 4
 ---
 
 这篇文章承接前一篇开发教程，专门记录微信小程序从“电脑里能运行”到“手机上可测试、可提交审核”的上线阶段。重点不是再重复代码开发，而是把真机验证、体验版权限、版本上传和审核发布这些容易卡住的步骤走通。

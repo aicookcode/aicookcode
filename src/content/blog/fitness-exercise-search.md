@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "GitHub 热榜上的 1324 个健身动作项目，我用 AI 编程做成了搜索站"
 description: "vibe coding一个可在线体验的健身动作查询工具"
 pubDate: 2026-07-07T20:30:00+08:00

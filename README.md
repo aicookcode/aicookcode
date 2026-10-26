@@ -64,13 +64,16 @@ tags: ["AI", "独立开发"]
 cover: "/images/workspace.jpg"
 coverAlt: "封面的准确文字描述"
 featured: false
+visible: true
 draft: false
 ---
 ```
 
 分类支持 `AI 应用`、`GitHub 实践`、`建站笔记`、`开发工具`。URL 是 `/articles/your-slug/`。二级和三级标题自动组成目录。
 
-`draft: true` 或发布日期晚于构建时间的文章不会发布到页面、搜索或 RSS。计划文章到期后需要重新触发构建。修改文章可增加 `updatedDate`。标题、描述、图片与代码均应在正式发布前按你的实际经历和需求审阅。
+`visible` 控制文章是否显示：`true` 显示，`false` 隐藏，未填写时默认 `true`。现有文章均设为 `visible: true`，后续可按需改为 `false`。隐藏文章不会出现在首页、文章列表、专题、相关推荐、搜索、RSS 或站点地图中，也不会生成文章详情页；修改后需要重新构建和部署才会在线上生效。
+
+`draft: true` 或发布日期晚于构建时间的文章同样不会发布到页面、搜索或 RSS。计划文章到期后需要重新触发构建。修改文章可增加 `updatedDate`。标题、描述、图片与代码均应在正式发布前按你的实际经历和需求审阅。
 
 ## 扩展站点功能
 

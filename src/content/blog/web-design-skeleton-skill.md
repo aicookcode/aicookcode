@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "去掉网页 AI 味，这个 Skill 给 AI 装了 20 套设计骨架"
 description: "去掉网页AI味，页面更自然更好看不再模板化"
 pubDate: 2026-08-05T17:00:00+08:00

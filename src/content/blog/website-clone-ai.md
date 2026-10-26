@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "输入网址，AI 直接复刻出完整网站"
 description: "一键克隆并重建任意网站，秒变现代React应用"
 pubDate: 2026-06-18T07:30:00+08:00

@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "别再手搓爬虫：4.4k Star 项目，把淘宝、小红书、闲鱼、抖音数据抓取做成 80 个 AI Skill"
 description: "一个开源项目，把抓淘宝小红书闲鱼数据做成了80个AI技能"
 pubDate: 2026-07-16T17:00:00+08:00

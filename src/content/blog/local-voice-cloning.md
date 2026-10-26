@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "普通笔记本也能本地克隆配音：Qwen3-TTS 与 ZipVoice 实战"
 description: "用一台 i5、16GB 内存、没有 NVIDIA 显卡的 Windows 笔记本，跑通 Qwen3-TTS 与 ZipVoice 的安装、声音克隆、参数调优和换稿验证，附操作截图与真实音频对比。"
 pubDate: 2026-10-19T00:00:00-04:00

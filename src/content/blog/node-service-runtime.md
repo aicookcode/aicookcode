@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "AI 时代前端转全栈之 Node 篇：Node 服务"
 description: "从 Node 服务启动到客户端收到响应，看清 Node 服务的运行过程。"
 pubDate: 2026-04-15T23:14:00+08:00

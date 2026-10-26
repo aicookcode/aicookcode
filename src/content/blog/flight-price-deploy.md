@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "把 Vibe Coding 的机票比价系统部署到阿里云（保姆级教程）"
 description: "从前后端分离、Nginx 代理到 systemd 守护，记录一个 Vibe Coding 项目从本地玩具走向公网服务的完整部署流程。"
 pubDate: 2026-04-23T06:20:00+08:00

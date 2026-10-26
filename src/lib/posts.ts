@@ -4,7 +4,7 @@ import { learningPaths } from '../config/learning-paths';
 
 export type Post = CollectionEntry<'blog'>;
 export async function getPosts() {
-  return (await getCollection('blog', ({ data }) => !data.draft && data.pubDate <= new Date()))
+  return (await getCollection('blog', ({ data }) => data.visible && !data.draft && data.pubDate <= new Date()))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 export const postPath = (post: Post) => `/articles/${post.id}/`;

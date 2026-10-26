@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "不用学剪辑！这个 Skill 准备了 104 张镜头卡给 Agent 做视频"
 description: "104张镜头卡，让AI轻松制作电影感视频"
 pubDate: 2026-08-03T17:34:00+08:00

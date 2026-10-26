@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "AI 帮助投出 69 份定制简历、拿下 offer，这套求职流程开源了"
 description: "用 AI 找工作：筛岗位、改简历、准备面试，这套开源流程全自动"
 pubDate: 2026-08-13T13:54:03+08:00

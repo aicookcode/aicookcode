@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "找数据源和选接口不再是 Vibe Coding 的瓶颈了，这里有 1680 个数据源 API"
 description: "这个 46 万 Star 的 GitHub 仓库，可能是每个 AI 开发者都该收藏的“API 货架”"
 pubDate: 2026-08-16T17:44:32+08:00

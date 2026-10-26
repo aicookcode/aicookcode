@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "我在 VS Code 里“聊天”10 分钟，AI 直接给我画完了页面：Pencil + Agent 太离谱了"
 description: "最近总刷到 AI Pencil，我也一直好奇它到底能干嘛。真上手后只有一句话: 上头了。"
 pubDate: 2026-03-27T08:45:00+08:00

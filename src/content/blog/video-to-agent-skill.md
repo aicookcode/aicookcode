@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "Agent 看不了视频？这个 Skill 把画面拆给它看"
 description: "让Claude Code、Codex、Cursor等Agent不再只靠字幕猜视频内容"
 pubDate: 2026-07-23T07:00:00+08:00

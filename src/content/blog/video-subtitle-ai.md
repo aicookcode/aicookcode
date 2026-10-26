@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "我用 8GB 旧 Mac，让 AI 把英文视频做成了中文字幕版"
 description: "8GB 老 Mac 跑通 VideoLingo 视频翻译"
 pubDate: 2026-07-17T17:00:00+08:00
@@ -6,6 +7,8 @@ category: "GitHub 实践"
 tags: ["字幕", "视频翻译", "本地 AI"]
 cover: "/media/video-subtitle-ai/cover.jpg"
 coverAlt: "我用 8GB 旧 Mac，让 AI 把英文视频做成了中文字幕版"
+featured: true
+featuredOrder: 3
 ---
 
 以前一条外文视频要变成中文版，背后至少需要一个小字幕组。有人听译，有人校对，有人压字幕，有人调时间轴，最好还能把配音也补上。

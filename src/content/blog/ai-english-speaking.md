@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "哑巴英语的解法，居然是 AI"
 description: "GPT Live 这个超拟人、低延迟的实时语音外教，不花钱、不尴尬，打开手机就能练口语。"
 pubDate: 2026-07-15T17:15:00+08:00

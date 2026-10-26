@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "TypeScript 大师的 AI 编程流水线：5 个 Skill，从想法到可维护代码"
 description: "AI写代码跟招实习生很像——你不给流程，它就按自己理解来。这套流水线就是给AI的入职手册。"
 pubDate: 2026-07-13T16:30:00+08:00

@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "13K+ Star 的 GPT Image 2 项目：不只整理提示词，还能跑通 API 调用"
 description: "GPT-Image-2 的 Prompt 工程和 API 实践"
 pubDate: 2026-05-08T18:39:16+08:00

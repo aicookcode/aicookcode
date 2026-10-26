@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "Claude Code 做 PPT 也太猛了：一句话生成高颜值网页PPT"
 description: "一做 PPT 就头大，标题放哪、配色怎么搭、图片怎么配、页面风格怎么统一。现在这些事，AI 统统可以帮你搞定，直接做出一份漂亮的 PPT。"
 pubDate: 2026-05-12T17:00:00+08:00

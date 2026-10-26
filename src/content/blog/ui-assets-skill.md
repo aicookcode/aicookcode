@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "不想手动抠图？试试这个让 AI 帮你切图的 Skill"
 description: "用 ui-assets-skill 分析 UI 设计稿，提取背景、图标与装饰，检查并打包素材，再交给 Agent 还原页面。附古诗词小程序实测与安装步骤。"
 pubDate: 2026-10-22

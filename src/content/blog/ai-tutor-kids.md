@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "DeepTutor AI 家教教程：教材导入、模型配置与练习验收"
 description: "用 DeepTutor 搭建围绕教材的 AI 家教：配置 LLM 与嵌入模型，导入一节教材，再用引用核对、变式题和错题复习检查辅导效果。"
 pubDate: 2026-07-27T17:00:00+08:00

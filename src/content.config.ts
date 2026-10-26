@@ -16,6 +16,7 @@ const blog = defineCollection({
     coverFit: z.enum(['cover', 'contain']).default('cover'),
     featured: z.boolean().default(false),
     featuredOrder: z.number().int().min(1).max(4).optional(),
+    visible: z.boolean().default(true),
     draft: z.boolean().default(false),
   }),
 });

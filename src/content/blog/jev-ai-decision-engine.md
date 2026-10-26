@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "Jev 是什么？用大白话解释它与 GPT、Claude 的区别"
 description: "用中文解释 Jev 的判断模型、Choice、Score、Noul 三种模式，以及它与 GPT、Claude 在速度、成本和输出方式上的差异。"
 pubDate: 2026-09-19T14:22:56+08:00

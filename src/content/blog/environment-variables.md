@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "环境变量怎么放？从本地配置到密钥边界"
 description: "分清公开配置与服务端密钥，避免把 API Key 一起打包进前端，或不小心提交到 GitHub。"
 pubDate: 2026-04-10T02:00:00+08:00

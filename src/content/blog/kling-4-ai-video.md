@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "一次生成 30 秒 4K 视频：快手 Kling 4.0 发布，AI 短视频开始像导演一样工作了"
 description: "快手 Kling AI 9 月 28 日发布 Kling 4.0：单次生成 30 秒、10 个关键帧、15 个引用、4K HDR，正式版 10 月上线。AI 视频从“玩具”变成“工具”了。"
 pubDate: 2026-10-10T12:00:00+08:00

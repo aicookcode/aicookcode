@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "难怪你的 WorkBuddy 跟别人不一样——这 5 个设置可能一个都没开"
 description: "别只当聊天工具，调好这 5 个设置让它懂你"
 pubDate: 2026-08-12T07:00:00+08:00

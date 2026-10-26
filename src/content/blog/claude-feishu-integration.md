@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "把 Claude Code / Codex 接入飞书，让你的工作变轻松"
 description: "让本地 Agent 进入真实协作流程"
 pubDate: 2026-08-18T19:17:19+08:00

@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "别再手动搬资料了，让 AI 自己读 B站/小红书/推特"
 description: "让Agent能自己搜索、读取并整理B站、小红书、X、GitHub等平台的内容"
 pubDate: 2026-07-29T21:12:07+08:00
@@ -6,6 +7,8 @@ category: "GitHub 实践"
 tags: ["B站", "小红书", "AI 阅读"]
 cover: "/media/social-reader-ai/cover.jpg"
 coverAlt: "别再手动搬资料了，让 AI 自己读 B站/小红书/推特"
+featured: true
+featuredOrder: 4
 ---
 
 这就是我们每天遇到的情况——

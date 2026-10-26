@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "82.1K+ Stars 的 AI 视频工具，输入主题，自动剪出一条视频"
 description: "最近刷到一个免费开源神器：`MoneyPrinterTurbo` —— AI 短视频生成工具。"
 pubDate: 2026-06-09T13:30:00+08:00

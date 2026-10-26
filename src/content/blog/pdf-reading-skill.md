@@ -1,4 +1,5 @@
 ---
+visible: false
 title: "AI 读 PDF 老出错，别再怪模型了"
 description: "把PDF丢给AI，它答得头头是道，你一对原文全是错的。很多时候不是AI笨，是文件在进AI之前就已经乱了。先花一分钟把文档整理干净，AI才读得对。"
 pubDate: 2026-07-01T18:35:17+08:00

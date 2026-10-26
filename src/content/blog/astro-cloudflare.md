@@ -1,4 +1,5 @@
 ---
+visible: true
 title: "从本地到线上：用 Astro 搭建并发布你的博客"
 description: "以 AICookCode 为例，串起本地开发、Markdown 写作、GitHub 管理与 Cloudflare Pages 部署。"
 pubDate: 2026-03-25T04:00:00+08:00
