@@ -1,8 +1,9 @@
 ---
 visible: true
-title: "AI 时代前端转全栈之 Node 篇：Node 服务"
-description: "从 Node 服务启动到客户端收到响应，看清 Node 服务的运行过程。"
+title: "Node.js HTTP 服务入门：进程、端口、请求与响应"
+description: "解释 Node.js 服务从启动到响应的过程，提供可运行的健康检查接口，以及连接失败、404、端口占用和异步阻塞的排查方法。"
 pubDate: 2026-04-15T23:14:00+08:00
+updatedDate: 2026-10-27
 category: "开发工具"
 tags: ["Node.js", "全栈开发", "后端", "JavaScript"]
 cover: "/media/node-service/cover.jpg"
@@ -241,7 +242,43 @@ app.get('/user', async (req, res) => {
 
 所以，Node 特别适合 API 服务、BFF 层、网关服务、实时通信和 I/O 密集型业务，因为它把等待网络、等待数据库、等待外部接口的时间都利用起来了。
 
-## 六、一句话把整件事串起来
+## 六、自己运行一个可检查的 HTTP 服务
+
+将下面的代码保存为 `server.cjs`，再运行 `node server.cjs`。使用 `.cjs` 是为了明确按 CommonJS 加载，避免当前项目的模块配置影响 `require` 示例。
+
+```js
+const http = require('node:http');
+
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  if (req.method === 'GET' && req.url === '/health') {
+    res.writeHead(200);
+    res.end(JSON.stringify({ ok: true }));
+    return;
+  }
+  res.writeHead(404);
+  res.end(JSON.stringify({ error: 'Not found' }));
+});
+
+server.listen(3000, '127.0.0.1', () => {
+  console.log('Listening on http://127.0.0.1:3000');
+});
+```
+
+浏览器打开 `http://127.0.0.1:3000/health`，应看到 `{"ok":true}`；访问 `/missing` 应收到 HTTP 404。这里只监听本机地址，其他设备无法通过服务器公网 IP 直接访问它。
+
+| 现象 | 说明 | 先检查什么 |
+| --- | --- | --- |
+| 连接被拒绝 | 还没有收到 HTTP 响应 | 进程是否存活、地址和端口是否一致 |
+| 返回 404 | 已连到服务，但没有匹配接口 | 路径与请求方法 |
+| `EADDRINUSE` | 监听端口已被占用 | 找到原进程，或换一个测试端口 |
+| 所有请求一起变慢 | 可能存在主线程阻塞或资源瓶颈 | 同步大计算、同步文件读写和外部依赖 |
+
+`async` 或 `await` 不会把同步的大计算自动移到其他线程。例子中的数据库请求只说明异步 I/O 的等待方式，不能据此认为任何业务都不会阻塞。
+
+HTTP API 参考 [Node.js 官方文档](https://nodejs.org/api/http.html)。本机服务确认正常后，再按 [Nginx 与 systemd 部署流程](/articles/flight-price-deploy/) 把服务交给代理和进程管理器。
+
+## 七、一句话把整件事串起来
 
 如果把整篇文章压缩成一句话，可以概括为：
 

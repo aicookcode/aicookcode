@@ -1,8 +1,9 @@
 ---
 visible: true
-title: "别再手动搬资料了，让 AI 自己读 B站/小红书/推特"
-description: "让Agent能自己搜索、读取并整理B站、小红书、X、GitHub等平台的内容"
+title: "Agent Reach 使用指南：让 AI 搜索和读取多平台资料"
+description: "从安装与渠道检查，到整理 B站、小红书、X 和 GitHub 资料，给出带原链接的调研任务模板、读取失败处理与账号权限边界。"
 pubDate: 2026-07-29T21:12:07+08:00
+updatedDate: 2026-10-27
 category: "GitHub 实践"
 tags: ["B站", "小红书", "AI 阅读"]
 cover: "/media/social-reader-ai/cover.jpg"
@@ -118,6 +119,24 @@ https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
 https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
 先使用 --dry-run 预览，不要实际安装
 ```
+
+## 第一次调研，把“读到了什么”也写进交付要求
+
+先选一个公开网页或 GitHub 项目跑通读取，再扩大到需要登录的平台。可以把下面的任务交给 Agent：
+
+```text
+围绕我给出的主题整理 3 条可访问的资料。
+每条保留标题、原链接、可见的发布日期、与问题有关的原文依据和你的总结。
+发布日期看不到就写未知；区分完整正文、搜索摘要和视频字幕。
+打不开的链接单独列出失败原因，不用其他页面替它补正文。
+最后列出互相矛盾的结论，等待我选择需要进一步核对的材料。
+```
+
+“能打开页面”和“拿到完整正文”是两件事。只有摘要时，不应把结果写成阅读全文后的判断；视频只有字幕时，也不能声称检查过画面。遇到登录或平台限制，先缩小到可访问的来源，并保留失败记录。
+
+如果任务需要逐页点击、分页取数和字段表格，可对照 [BrowserAct 的网页采集流程](/articles/crawler-skills/)；已经有可调用接口时，先按 [public-apis 接口筛选方法](/articles/datasource-api-collection/) 判断能否直接取数。
+
+渠道与配置方式参考 [Agent Reach 官方仓库](https://github.com/Panniantong/Agent-Reach)。
 
 ## 写在最后
 

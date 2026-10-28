@@ -1,8 +1,9 @@
 ---
 visible: true
-title: "把 Vibe Coding 的机票比价系统部署到阿里云（保姆级教程）"
-description: "从前后端分离、Nginx 代理到 systemd 守护，记录一个 Vibe Coding 项目从本地玩具走向公网服务的完整部署流程。"
+title: "Node.js 全栈应用部署到阿里云：Nginx、systemd 与排错"
+description: "以机票比价应用为例，部署前后端并配置 Nginx 代理和 systemd，按本机接口、代理入口和页面请求逐层验证与排错。"
 pubDate: 2026-04-23T06:20:00+08:00
+updatedDate: 2026-10-27
 category: "开发工具"
 tags: ["Vibe Coding", "阿里云", "部署", "Nginx", "Node.js"]
 cover: "/media/flight-price-deploy/cover.jpg"
@@ -395,6 +396,22 @@ pnpm build
 sudo systemctl restart demo-backend
 sudo systemctl reload nginx
 ```
+
+## 页面能开，但接口不通：按三层检查
+
+沿着“后端本机 → Nginx → 浏览器”排查，先固定同一个健康检查路径，不要同时更换端口、域名和代码。
+
+| 检查位置 | 检查内容 | 失败通常指向哪里 |
+| --- | --- | --- |
+| 服务器本机 | `http://127.0.0.1:3000/api/health` | 后端进程、配置、实际监听端口 |
+| Nginx 入口 | 代理端口上的同一路径 | `location`、`proxy_pass` 和 Nginx 错误日志 |
+| 浏览器网络面板 | 页面实际发出的 API 请求 | 前端 API 基址、HTTPS 混合内容、跨域设置 |
+
+如果代理返回 502，先确认后端能从本机访问，再检查代理目标；如果返回 404，确认路径有没有被代理重写。状态码不同，对应的排查方向也不同，不能只靠刷新页面判断。
+
+服务重启后还应再跑一次健康检查，并检查 `systemctl status demo-backend`。准备日常使用时，将正式域名、HTTPS 和前端 API 基址一并核对；文中的公网 IP 与端口用于说明链路，不等于已经完成正式域名部署。
+
+还不清楚进程和端口关系时，可以先运行 [Node.js 最小 HTTP 服务](/articles/node-service-runtime/)；模型密钥和部署变量参考 [环境变量边界](/articles/environment-variables/)。
 
 ## 结语
 

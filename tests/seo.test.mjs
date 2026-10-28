@@ -43,9 +43,9 @@ test('sitemap contains exactly the canonical public HTML pages and truthful prio
   assert.deepEqual(new Set(urls), new Set(pages.map(({ path }) => site + path)));
   for (const slug of ['ai-tutor-kids', 'agent-loop-guide']) {
     const entry = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].find((match) => match[1].includes(`/articles/${slug}/`))?.[1];
-    assert.match(entry ?? '', /<lastmod>2026-10-26(?:T00:00:00\.000Z)?<\/lastmod>/);
+    assert.match(entry ?? '', /<lastmod>2026-10-27(?:T00:00:00\.000Z)?<\/lastmod>/);
     const html = page(`/articles/${slug}/`);
-    assert.match(html, /"dateModified":"2026-10-26T00:00:00\.000Z"/);
+    assert.match(html, /"dateModified":"2026-10-27T00:00:00\.000Z"/);
     assert.match(html, /内容更新：/);
   }
   for (const tag of ['Nginx', '微信小程序', '后端', '阿里云', 'Vibe Coding', '小程序发布']) {

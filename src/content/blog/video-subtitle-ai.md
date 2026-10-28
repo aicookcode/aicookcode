@@ -1,8 +1,9 @@
 ---
 visible: true
-title: "我用 8GB 旧 Mac，让 AI 把英文视频做成了中文字幕版"
-description: "8GB 老 Mac 跑通 VideoLingo 视频翻译"
+title: "VideoLingo 视频字幕翻译：8GB Intel Mac 实践与校对方法"
+description: "记录在 8GB Intel Mac 上运行 VideoLingo 的流程，说明模型与配音配置，并用短片检查术语、断句、时间轴和导出字幕。"
 pubDate: 2026-07-17T17:00:00+08:00
+updatedDate: 2026-10-27
 category: "GitHub 实践"
 tags: ["字幕", "视频翻译", "本地 AI"]
 cover: "/media/video-subtitle-ai/cover.jpg"
@@ -107,7 +108,7 @@ VideoLingo 支持自定义术语库，也可以让 AI 根据视频内容自动�
 
 字幕是基础能力，VideoLingo 往前多走了一步，它也支持配音。
 
-TTS 方案包括 Edge TTS、OpenAI TTS、Azure TTS、Fish TTS、SiliconFlow FishTTS、GPT-SoVITS 等。简单用，可以选 Edge TTS。本地免费组合也可以走 Ollama + Edge TTS。想要更好的声音效果，或者做声音克隆，就要接更强的 TTS 方案。
+TTS 方案包括 Edge TTS、OpenAI TTS、Azure TTS、Fish TTS、SiliconFlow FishTTS、GPT-SoVITS 等。简单用，可以选 Edge TTS。也可以组合 Ollama 与 Edge TTS，但 Edge TTS 是在线配音服务，不能因此把整条流程称为完全离线。想要更好的声音效果，或者做声音克隆，就要接更强的 TTS 方案。
 
 ![VideoLingo 配音设置](/media/video-subtitle-ai/img_04.png)
 
@@ -128,6 +129,19 @@ https://github.com/Huanshere/VideoLingo
 ![VideoLingo 运行界面](/media/video-subtitle-ai/img_05.png)
 
 如果运行过程中遇到报错，直接把报错继续交给 Agent，让它判断下一步怎么处理。
+
+## 先验收一分钟字幕，再处理完整视频
+
+本文中的 8GB Intel Mac 和处理时长是这次实践的环境与结果，不代表所有模型、视频长度和语言组合都能达到相同速度。先截取一段包含术语、数字和停顿的短片，分别检查：
+
+- **原文识别**：人名、型号、数字是否准确。原字幕错了，先修识别结果，再翻译。
+- **术语一致性**：相同技术词前后是否采用同一种译法；保留一份需要固定翻译的词表。
+- **时间轴与断句**：逐句播放，检查字幕是否抢先出现、是否压到下一位说话人。
+- **最终导出**：在播放器里重新打开字幕与视频，检查编码、换行和结尾。
+
+翻译模型能理解某种语言，不等于对应的识别、断句和 TTS 都支持该语言。把“原声转写 → 翻译 → 配音”分开试，每步通过再往后走，避免最终合成失败后重做全部流程。
+
+想为视频使用自己的声音，可参考 [本地克隆配音实践](/articles/local-voice-cloning/)；仅需要会议转写与摘要时，对照 [Meetily 本地会议流程](/articles/meeting-recorder-local/)。版本与配置入口参考 [VideoLingo 官方仓库](https://github.com/Huanshere/VideoLingo)。
 
 ## 适合谁
 

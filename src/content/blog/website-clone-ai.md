@@ -1,21 +1,22 @@
 ---
 visible: true
-title: "输入网址，AI 直接复刻出完整网站"
-description: "一键克隆并重建任意网站，秒变现代React应用"
+title: "Open Lovable 网站复刻教程：安装、模型配置与页面验收"
+description: "用 Firecrawl、模型 API 和预览环境生成 React 页面，修正安装命令，并逐项检查布局、交互、资源与后端功能边界。"
 pubDate: 2026-06-18T07:30:00+08:00
+updatedDate: 2026-10-27
 category: "GitHub 实践"
 tags: ["网站复刻", "AI 编程", "开源项目"]
 cover: "/media/website-clone-ai/cover.jpg"
 coverAlt: "输入网址，AI 直接复刻出完整网站"
 ---
 
-最近前端圈被一个开源项目刷屏了：Open Lovable 。它由知名网页抓取工具 Firecrawl 团队推出，上线短短几天就收获上万 Star，现在已经超过 26k Star，堪称 2026 年最火的 AI + 前端开源项目之一。
+Open Lovable 是 Firecrawl 团队开源的网页生成项目：输入参考网址，抓取可访问的页面内容，再让模型生成 React 页面，并在预览环境中继续修改。本文按安装、配置、生成和验收四个环节整理使用方法。
 
 GitHub：`https://github.com/firecrawl/open-lovable`
 
 ## 项目定位
 
-**`一句话总结：输入任何网站的 URL，它能在几分钟内完整复刻出一个几乎相同的 React 现代网页应用，包括复杂布局、样式和基础交互。`**
+**它适合从参考页面生成前端原型。** 网页抓取结果、模型能力和源站访问限制都会影响生成质量；登录、支付、数据库和服务端业务需要单独实现，不能从页面外观推断这些功能已经可用。
 
 <figure>
   <video class="article-video-landscape" controls playsinline preload="metadata" width="2210" height="1080" poster="/media/website-clone-ai/video-poster.jpg" aria-label="Open Lovable 网站复刻效果演示">
@@ -31,30 +32,30 @@ GitHub：`https://github.com/firecrawl/open-lovable`
 
 ## 核心亮点
 
-- **一键复刻任意网站**：支持复杂布局和交互，还原度极高。
+- **以网址作为页面参考**：可据此生成布局和基础交互，复杂页面仍需逐项检查。
 - **支持搜索入口**：不记得具体网址时，可以输入关键词，项目会走 Firecrawl 搜索，返回候选页面和截图。
-- **多模型支持**：兼容 OpenAI、Claude Code、Gemini 等主流大模型和第三方供应商，随便选。
+- **多模型支持**：可按当前版本支持的供应商配置模型；模型名称、接口兼容性和环境变量应对照仓库说明。
 - **强大网页抓取能力**：底层依赖 Firecrawl，能精准抓取页面结构、内容和样式，还原更准确。
 - **带沙箱预览**：生成代码会写进 Vercel Sandbox 或 E2B，页面可以直接预览。
 - **聊天修改调整项目**：生成后可以继续描述修改需求，项目会基于已有文件做编辑。
 
-项目本质上是 Firecrawl 团队自用的内部工具，后来开源分享。官方也提到，如果想要更完整的一站式云端体验，可以看看他们的 [https://lovable.dev/](https://lovable.dev/)。
+本文围绕 [Open Lovable 官方仓库](https://github.com/firecrawl/open-lovable) 的本地部署流程展开。安装与环境变量以你下载版本的 README 为准。
 
 ## 安装使用
 
 ### 1. 克隆 & 安装
 
 ```
-git clone [https://github.com/firecrawl/open-lovable.git](https://github.com/firecrawl/open-lovable.git)
-cd open-lovable
-pnpm install # or npm install / yarn install
+git clone https://github.com/firecrawl/open-lovable.git
+cd open-lovable
+pnpm install
 ```
 
 ### 2. 配置 `.env.local` 文件
 
 **填入必要的 API Key**
 
-- **FIRECRAWL_API_KEY**：用于抓取复刻网页的内容和截图。在 firecrawl.dev 获取，免费额度是 1000 credits，生成视频里的一个页面大约消耗 20 credits，大家可以据此估算。
+- **FIRECRAWL_API_KEY**：用于抓取复刻网页的内容和截图。在 Firecrawl 控制台获取。抓取、模型和预览环境分别核对额度，不把一次演示的消耗当作所有页面的固定成本。
 
 ```
 FIRECRAWL_API_KEY=your_firecrawl_api_key
@@ -73,7 +74,7 @@ GROQ_API_KEY=your_groq_api_key
 OPENAI_BASE_URL=xxxx
 ```
 
-- **Vercel 或 E2B 沙盒配置**：用于运行和预览复刻的 React 项目。Vercel 和 E2B 都提供免费额度，选其一配置即可。
+- **Vercel 或 E2B 沙盒配置**：用于运行和预览复刻的 React 项目。按当前版本支持的提供方选择并配置，额度与计费以对应平台为准。
 
 ```
 # 使用 vercel
@@ -106,6 +107,21 @@ pnpm dev
 生成好的 React 项目如果需要下载到本地，直接点击页面上的下载按钮即可。
 
 ![](/media/website-clone-ai/img_05.png)
+
+## 第一次生成后，怎样确认页面能交付
+
+先选择自己有权使用、无需登录的单页作为参考，记录桌面和手机两种宽度，再生成一个版本。下面是检查方法，不是对任意网站的还原率承诺。
+
+| 检查项 | 操作 | 通过标准 |
+| --- | --- | --- |
+| 布局 | 对照两种宽度检查导航、正文与页脚 | 无横向溢出，主要信息没有遮挡 |
+| 交互 | 点击导航、按钮，提交一份测试表单 | 链接可达；未接入后端的操作明确提示 |
+| 资源 | 检查图片、字体和浏览器失败请求 | 没有依赖原站登录态的资源 |
+| 下载交付 | 在新目录安装下载项目并启动 | 能复现预览结果，所需变量有示例 |
+
+抓取失败先检查源网址能否公开访问；抓取成功但生成失败，再查模型配置；代码生成后预览失败，再检查预览环境的错误。三步分开排查，避免每次都重新生成整站。
+
+只有截图或设计稿时，可参考 [UI 素材提取实践](/articles/ui-assets-skill/) 准备素材；准备公开部署时，再按 [Astro 与 Cloudflare Pages 发布检查](/articles/astro-cloudflare/) 理解构建产物与域名的关系。后者是本站静态博客的部署示例，不直接替代 React 项目的构建配置。
 
 ## 谁适合使用？
 
