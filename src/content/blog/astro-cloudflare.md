@@ -62,7 +62,7 @@ draft: false
 
 第一次提交之前，检查 `.gitignore` 已排除依赖目录、构建产物、本地环境变量和日志。完成提交并推送后，把真实仓库链接填写到 `src/config/site.ts` 的 `githubUrl`。
 
-如果还不熟悉分支和提交，可以先阅读 [一套顺手的日常 Git 工作流](/articles/git-workflow/)。
+如果还不熟悉分支和提交，先确认当前分支，检查本次改动，再提交并推送到自己的仓库。
 
 ## 连接 Cloudflare Pages
 
