@@ -69,3 +69,37 @@ test('priority tutorials retain crawlable links without the removed task module'
     assert.match(page(`/articles/${slug}/`), new RegExp(`data-article-id="${slug}"`));
   }
 });
+
+test('curated topic hubs and member articles link to each other in static HTML', () => {
+  for (const [slug, articles] of [
+    ['workbuddy', ['workbuddy-5-settings', 'workbuddy-mini-program-development', 'workbuddy-mini-program-launch']],
+    ['ai-avatar', ['ai-talking-avatar', 'local-voice-cloning', 'voice-clone-local-tool']],
+    ['ui-assets', ['ui-assets-skill', 'website-clone-ai']],
+  ]) {
+    for (const listing of ['/topics/', '/topics/ai/']) {
+      assert.ok(page(listing).includes(`href="/topics/${slug}/"`), listing);
+    }
+    for (const article of articles) {
+      assert.ok(page(`/topics/${slug}/`).includes(`href="/articles/${article}/"`), `${slug} -> ${article}`);
+      assert.ok(page(`/articles/${article}/`).includes(`href="/topics/${slug}/"`), `${article} -> ${slug}`);
+    }
+  }
+});
+
+test('three editorial tracks preserve category routes and lead to evidence-bearing tutorials', () => {
+  for (const path of ['/', '/topics/']) {
+    const html = page(path);
+    for (const label of ['AI 工具真实实测', '独立建站上线复盘', '普通用户可复现工作流']) assert.ok(html.includes(label), `${path}: ${label}`);
+    for (const slug of ['ai-talking-avatar', 'local-voice-cloning', 'ui-assets-skill', 'workbuddy-mini-program-development', 'astro-cloudflare']) {
+      assert.ok(html.includes(`href="/articles/${slug}/"`), `${path}: ${slug}`);
+    }
+    for (const slug of ['ai', 'github', 'web', 'tools']) assert.ok(html.includes(`href="/topics/${slug}/"`), `${path}: retained ${slug}`);
+  }
+});
+
+test('independent product entries appear in the about context without a global cross-link module', () => {
+  for (const href of ['https://astroew.com/chart', 'https://validusaddr.aicook.de5.net/']) {
+    assert.ok(page('/about/').includes(`href="${href}"`));
+    for (const path of ['/', '/topics/', '/articles/ai-talking-avatar/']) assert.ok(!page(path).includes(`href="${href}"`), path);
+  }
+});

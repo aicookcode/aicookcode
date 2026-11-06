@@ -5,6 +5,7 @@ import PostCard from '../../components/PostCard.astro';
 import AuthorCard from '../../components/AuthorCard.astro';
 import ContactChannels from '../../components/ContactChannels.astro';
 import ReadingPath from '../../components/ReadingPath.astro';
+import { focusTopics } from '../../config/focus-topics';
 import { getPosts, getRelatedPosts, postUrl, dateLabel, readMinutes } from '../../lib/posts';
 import { site, categorySlug } from '../../config/site';
 import { ArrowLeft, ArrowUp, ArrowUpRight, Clock3, CalendarDays, Link, List, CodeXml } from '@lucide/astro';
@@ -13,6 +14,7 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const all = await getPosts();
 const related = getRelatedPosts(post, all);
+const guides = focusTopics.filter((topic) => topic.steps.some((step) => step.id === post.id));
 const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
 const schema = {
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title,
@@ -47,6 +49,7 @@ const schema = {
   <div class="container article-page"><header class="article-header"><a class="back-link" href="/articles/"><ArrowLeft size={16} />全部文章</a><a class="article-category" href={`/topics/${categorySlug(post.data.category)}/`}>{post.data.category}</a><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-meta"><span class="author-avatar"><CodeXml size={17} /></span><span>{site.author}</span><span class="small-dot"></span><time datetime={post.data.pubDate.toISOString()}><CalendarDays size={14} />{dateLabel(post.data.pubDate)}</time><span><Clock3 size={14} />{readMinutes(post)} 分钟阅读</span></div></header>
   <div class="article-body-layout"><article class="prose article-prose"><div data-article-content data-article-id={post.id}><Content /></div><ReadingPath post={post} posts={all} />{post.data.updatedDate && <p class="updated-date">内容更新：<time datetime={post.data.updatedDate.toISOString()}>{dateLabel(post.data.updatedDate)}</time></p>}<AuthorCard /><ContactChannels kicker="KEEP IN TOUCH" title="继续保持连接" description="如果这篇文章对你有帮助，可以用下面的方式继续关注。" /><div class="article-end"></div><div class="article-tags"><span>本文标签</span>{post.data.tags.map((tag) => <span class="article-tag">#{tag}</span>)}</div><div class="article-share"><span id="share-status" role="status">把这篇笔记分享给同样好奇的人。</span><button class="button button-outline" id="copy-link"><Link size={15} />复制链接</button></div></article>
   <aside class="article-sidebar"><nav class="toc" aria-label="文章目录"><h2><List size={17} />本篇目录</h2>{toc.map((heading) => <a href={`#${heading.slug}`} class:list={{ 'toc-sub': heading.depth === 3 }}>{heading.text}</a>)}</nav></aside></div>
+  {guides.length > 0 && <nav class="related-section" aria-label="所属专题"><h2>继续按专题阅读</h2>{guides.map((topic) => <p><a class="text-link" href={`/topics/${topic.slug}/`}>{topic.name}<ArrowUpRight size={17} /></a>：{topic.description}</p>)}</nav>}
   <section class="related-section"><div class="section-heading"><div><span class="eyebrow">KEEP EXPLORING</span><h2>接着读一篇<span class="heading-dot">.</span></h2></div><a href="/articles/" class="text-link">全部文章<ArrowUpRight size={17} /></a></div><div class="posts-grid">{related.map((item) => <PostCard post={item} />)}</div></section></div>
 </BaseLayout>
 <script>

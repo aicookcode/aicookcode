@@ -1,7 +1,7 @@
 export const site = {
   name: 'AICookCode',
-  title: 'AICookCode - AI 应用与编程实践',
-  description: '记录 AI 应用、编程实践、独立建站和开发工具，分享从想法到上线的真实过程。',
+  title: 'AICookCode - AI 工具实测、独立建站与可复现工作流',
+  description: '记录 AI 工具的真实效果与失败过程、独立建站上线复盘，以及普通用户可以按步骤复现的工作流。用实际样本和验收方法，把想法变成可用结果。',
   url: 'https://aicookcode.com',
   author: 'AI 煮代码汤',
   authorUrl: '/about/',

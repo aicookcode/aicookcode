@@ -80,6 +80,7 @@
 .page-articles .footer-bottom .back-top{display:none}
 
 /* Article tables should use the full prose column instead of shrinking to their content. */
+.content-tracks{margin:42px 0}.content-tracks-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.content-track{padding:22px;border:1px solid var(--border);border-radius:7px;background:var(--surface);min-width:0}.content-track h3{font-size:18px;line-height:1.5}.content-track p{margin-top:10px;color:var(--muted);font-size:13px}.content-track ul{margin:16px 0 0;padding-left:18px}.content-track li{margin-top:9px;font-size:13px}.content-track a:hover{text-decoration:underline;text-underline-offset:4px}@media(max-width:760px){.content-tracks-grid{grid-template-columns:1fr}.content-tracks{margin:30px 0}}
 @media (min-width:761px){
   .prose table{display:table;width:100%;min-width:100%;max-width:100%;table-layout:fixed;overflow:visible}
   .prose th,.prose td{overflow-wrap:anywhere}

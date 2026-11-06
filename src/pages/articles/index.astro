@@ -6,7 +6,7 @@ import { getPosts } from '../../lib/posts';
 import { ArrowUp } from '@lucide/astro';
 const posts = await getPosts();
 ---
-<BaseLayout title="全部文章 · AICookCode" description="浏览 AICookCode 的全部 AI 应用、GitHub 实践、建站和开发工具笔记。">
+<BaseLayout title="AI 编程与工具教程：WorkBuddy、数字人与开源实践 · AICookCode" description="浏览 WorkBuddy 小程序开发与上线、AI 数字人口播、本地声音克隆、UI 素材提取和开源项目教程，按实操步骤完成从配置到验收。">
   <a class="article-back-top article-list-back-top is-hidden" href="#top" aria-label="回到顶部" title="回到顶部"><ArrowUp size={18} stroke-width={2.25} /></a>
   <div class="container archive-page"><header class="page-heading"><span class="eyebrow">THE NOTEBOOK</span><h1>每一次实践，都值得记录<span class="heading-dot">.</span></h1><p>从一个想法开始，在一行行代码里找到答案。</p></header>
   <div class="filter-row"><PostFilters /><span class="article-count" data-post-count>{posts.length} 篇文章</span></div>

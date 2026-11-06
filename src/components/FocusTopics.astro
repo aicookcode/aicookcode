@@ -1,0 +1,7 @@
+---
+import { focusTopics } from '../config/focus-topics';
+---
+<section class="related-section" aria-labelledby="focus-topics-title">
+  <div class="section-heading"><h2 id="focus-topics-title">按任务查找教程</h2></div>
+  <div class="topic-grid">{focusTopics.map((topic) => <a class="topic-item green" href={`/topics/${topic.slug}/`}><div><h3>{topic.name}</h3><p>{topic.description}</p></div></a>)}</div>
+</section>

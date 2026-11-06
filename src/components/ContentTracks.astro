@@ -1,0 +1,10 @@
+---
+import { contentTracks } from '../config/content-tracks';
+---
+<section class="content-tracks" aria-labelledby="content-tracks-title">
+  <div class="section-heading"><h2 id="content-tracks-title">从这三条主线开始读</h2></div>
+  <div class="content-tracks-grid">{contentTracks.map((track) => <article class="content-track">
+    <h3><a href={track.href}>{track.name}</a></h3><p>{track.description}</p>
+    <ul>{track.articles.map((article) => <li><a href={`/articles/${article.id}/`}>{article.label}</a></li>)}</ul>
+  </article>)}</div>
+</section>

@@ -136,8 +136,21 @@ test('intent events distinguish RSS, contact and repositories without sending em
     'https://github.com/aicookcode',
     'https://aicookcode.com/articles/',
   ]) visitor.click(href);
-  assert.deepEqual(visitor.events().map((event) => event[1]), ['rss_subscribe_click', 'contact_click', 'contact_click', 'contact_click', 'project_visit']);
+  assert.deepEqual(visitor.events().map((event) => event[1]), ['rss_subscribe_click', 'contact_click', 'contact_click', 'contact_click', 'project_visit', 'outbound_click']);
   const data = JSON.stringify(visitor.events());
   assert.doesNotMatch(data, /private|secret/);
-  assert.equal(visitor.events().at(-1)[2].project_path, '/HKUDS/DeepTutor');
+  assert.equal(visitor.events().at(-2)[2].project_path, '/HKUDS/DeepTutor');
+});
+
+test('outbound and asset click events avoid personal paths and distinguish download intent', () => {
+  const visitor = browser();
+  visitor.click('https://example.com/private-path?email=private#secret');
+  visitor.click('https://aicookcode.com/media/demo.mp4?token=private');
+  visitor.click('https://example.com/private-report.PDF?token=private');
+  visitor.click('javascript:void(0)');
+  assert.deepEqual(visitor.events().map((event) => event[1]), ['outbound_click', 'asset_download_click', 'asset_download_click']);
+  assert.equal(visitor.events()[0][2].link_domain, 'example.com');
+  assert.equal(visitor.events()[1][2].file_extension, 'mp4');
+  assert.equal(visitor.events()[2][2].file_extension, 'pdf');
+  assert.doesNotMatch(JSON.stringify(visitor.events()), /private|secret|token/);
 });

@@ -1,7 +1,8 @@
 ---
 visible: true
-title: "难怪你的 WorkBuddy 跟别人不一样——这 5 个设置可能一个都没开"
-description: "别只当聊天工具，调好这 5 个设置让它懂你"
+title: "WorkBuddy 设置教程：自定义指令、记忆、技能更新与备份"
+description: "逐项检查 WorkBuddy 的自定义指令、对话记忆、本地技能、自动更新和备份设置，附操作截图与存储位置说明。"
+updatedDate: 2026-11-05
 pubDate: 2026-08-12T07:00:00+08:00
 category: "AI 应用"
 tags: ["WorkBuddy", "设置", "效率"]

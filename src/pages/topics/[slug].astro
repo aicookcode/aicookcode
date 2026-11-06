@@ -4,8 +4,29 @@ import PostCard from '../../components/PostCard.astro';
 import { categories } from '../../config/site';
 import { getPosts } from '../../lib/posts';
 import { ArrowLeft } from '@lucide/astro';
-export function getStaticPaths() { return categories.map((category) => ({ params: { slug: category.slug }, props: { category } })); }
-const { category } = Astro.props;
-const posts = (await getPosts()).filter((post) => post.data.category === category.name);
+import { focusTopics } from '../../config/focus-topics';
+import FocusTopics from '../../components/FocusTopics.astro';
+export function getStaticPaths() {
+  return [
+    ...categories.map((category) => ({ params: { slug: category.slug }, props: { category, topic: undefined } })),
+    ...focusTopics.map((topic) => ({ params: { slug: topic.slug }, props: { category: undefined, topic } })),
+  ];
+}
+const { category, topic } = Astro.props;
+const all = await getPosts();
+const posts = topic
+  ? topic.steps.map((step) => {
+      const post = all.find((post) => post.id === step.id);
+      if (!post) throw new Error(`Missing published topic article: ${step.id}`);
+      return post;
+    })
+  : all.filter((post) => post.data.category === category!.name);
+const name = topic?.name ?? category!.name;
+const description = topic?.description ?? (category!.slug === 'ai'
+  ? '阅读 WorkBuddy 设置与微信小程序开发、AI 数字人口播、本地声音克隆和 AI 工作流教程，按截图、操作步骤与验收方法完成自己的项目。'
+  : category!.description);
+const title = topic?.title ?? (category!.slug === 'ai' ? 'AI 应用教程：WorkBuddy、数字人与开发实践' : category!.name);
 ---
-<BaseLayout title={`${category.name} · AICookCode`} description={category.description}><div class="container archive-page"><header class="page-heading"><a class="back-link" href="/topics/"><ArrowLeft size={16} />全部专题</a><h1>{category.name}<span class="heading-dot">.</span></h1><p>{category.description} <span class="muted">/ {posts.length} 篇笔记</span></p></header><div class="posts-grid">{posts.map((post) => <PostCard post={post} />)}</div></div></BaseLayout>
+<BaseLayout title={`${title} · AICookCode`} description={description}><div class="container archive-page"><header class="page-heading"><a class="back-link" href="/topics/"><ArrowLeft size={16} />全部专题</a><h1>{name}<span class="heading-dot">.</span></h1><p>{description} <span class="muted">/ {posts.length} 篇笔记</span></p></header>
+{topic && <section class="prose"><h2>从哪里开始</h2><p>{topic.introduction}</p><ol>{topic.steps.map((step, index) => <li><a href={`/articles/${step.id}/`}>{posts[index].data.title}</a>：{step.goal}</li>)}</ol></section>}
+<div class="posts-grid">{posts.map((post) => <PostCard post={post} />)}</div>{category?.slug === 'ai' && <FocusTopics />}</div></BaseLayout>

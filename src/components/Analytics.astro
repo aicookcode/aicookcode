@@ -27,7 +27,12 @@
     const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
     if (!link) return;
     const url = new URL(link.href);
-    if (url.origin === location.origin && url.pathname === '/rss.xml') {
+    if (!['http:', 'https:', 'mailto:'].includes(url.protocol)) return;
+    const extension = url.pathname.match(/\.([a-z0-9]+)$/i)?.[1]?.toLowerCase();
+    if (extension && ['zip', 'pdf', 'mp4', 'mp3', 'wav', 'docx', 'xlsx', 'csv'].includes(extension)) {
+      // This is a click intent, not proof that a download completed. Do not duplicate GA4 file_download.
+      trackEvent('asset_download_click', { file_extension: extension, link_domain: url.hostname });
+    } else if (url.origin === location.origin && url.pathname === '/rss.xml') {
       trackEvent('rss_subscribe_click');
     } else if (url.protocol === 'mailto:') {
       trackEvent('contact_click', { contact_method: 'email' });
@@ -36,6 +41,9 @@
     } else if (url.hostname === 'github.com' && url.pathname.split('/').filter(Boolean).length >= 2) {
       // Exclude profile links; do not send the destination query or arbitrary link text.
       trackEvent('project_visit', { link_domain: url.hostname, project_path: url.pathname });
+    } else if (url.origin !== location.origin && ['http:', 'https:'].includes(url.protocol)) {
+      // Domain only: avoid disclosing private path segments, queries or fragments.
+      trackEvent('outbound_click', { link_domain: url.hostname });
     }
   });
 

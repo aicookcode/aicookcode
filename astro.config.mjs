@@ -7,13 +7,17 @@ import optimizeImages from './integrations/optimize-images.mjs';
 
 // Keep sitemap lastmod aligned with deliberate editorial updates, not every build.
 // Listing pages have their own editorial dates; articles use their frontmatter.
-const currentEditorialUpdate = new Date('2026-10-26T00:00:00.000Z');
+const currentEditorialUpdate = new Date('2026-11-05T00:00:00.000Z');
 const recentlyUpdatedPages = new Map([
   ['/', currentEditorialUpdate],
+  ['/about/', currentEditorialUpdate],
   ['/topics/', currentEditorialUpdate],
   ['/topics/ai/', currentEditorialUpdate],
-  ['/topics/github/', currentEditorialUpdate],
-  ['/privacy/', currentEditorialUpdate],
+  ['/topics/workbuddy/', currentEditorialUpdate],
+  ['/topics/ai-avatar/', currentEditorialUpdate],
+  ['/topics/ui-assets/', currentEditorialUpdate],
+  ['/topics/github/', new Date('2026-10-26T00:00:00.000Z')],
+  ['/privacy/', new Date('2026-10-26T00:00:00.000Z')],
 ]);
 const categoryPaths = new Map([
   ['AI 应用', '/topics/ai/'],
@@ -51,6 +55,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   integrations: [sitemap({
+    filter: (url) => !['/404/', '/404.html'].includes(new URL(url).pathname),
     serialize: (item) => {
       const lastmod = recentlyUpdatedPages.get(new URL(item.url).pathname);
       return lastmod ? { ...item, lastmod } : item;
