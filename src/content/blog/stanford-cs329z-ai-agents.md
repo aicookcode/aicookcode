@@ -1,6 +1,6 @@
 ---
 title: "斯坦福 Agent 课程免费公开！不只教开发，还教你如何做出可靠的 AI Agent"
-description: "斯坦福 CS329Z 从 RAG、工具调用和 Agent 记忆讲到优化与评估，配套两套开源实战作业。梳理公开学习资料、课程重点和不同基础的学习路线。"
+description: "从基础到实战，课程视频、课件、代码免费学，系统掌握AI Agent开发！"
 pubDate: 2026-11-20
 category: "AI 应用"
 tags: ["AI Agent", "斯坦福", "CS329Z", "RAG", "Agent 评估"]
