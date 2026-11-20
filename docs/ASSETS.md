@@ -20,3 +20,8 @@
 
 正文截图位于 public/media/ui-assets-skill/，由作者本地文章目录导入。cover.png 使用内置 imagegen 工具生成，为从 UI 设计稿提取素材的概念封面，并非实际软件截图。
 
+
+## 斯坦福 CS329Z 课程文章（2026-11-20）
+
+正文两张截图由作者提供的 stanford 文章目录导入，展示课程官网与课程内容总览；相关名称与标志归原权利人所有。public/media/stanford-cs329z-ai-agents/cover.png 使用 GPT 内置生图工具生成，尺寸 1600×900（16:9），为 Agent 构建、测试与改进的概念插画，不是课程软件截图。
+
