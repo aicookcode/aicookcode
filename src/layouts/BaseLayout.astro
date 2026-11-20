@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Search from '../components/Search.astro';
 import Favicon from '../components/Favicon.astro';
 import Analytics from '../components/Analytics.astro';
+import AdSense from '../components/AdSense.astro';
 import { site } from '../config/site';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; }
@@ -46,6 +47,7 @@ const siteSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Analytics />
+    <AdSense />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={site.author} />
