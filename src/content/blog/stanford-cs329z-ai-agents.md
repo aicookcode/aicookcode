@@ -4,8 +4,8 @@ description: "斯坦福 CS329Z 从 RAG、工具调用和 Agent 记忆讲到优�
 pubDate: 2026-11-20
 category: "AI 应用"
 tags: ["AI Agent", "斯坦福", "CS329Z", "RAG", "Agent 评估"]
-cover: "/media/stanford-cs329z-ai-agents/cover.png"
-coverAlt: "让 Agent 可靠做事：AI 助手在桌前连接构建、测试与改进任务卡片"
+cover: "/media/stanford-cs329z-ai-agents/cover-stanford.png"
+coverAlt: "斯坦福 AI Agent 课程 CS329Z：校园钟楼、拱廊与展示智能体课程图示的学习电脑"
 featured: false
 visible: true
 draft: false
