@@ -2,6 +2,11 @@
 
 面向 AI 应用与 GitHub 实践的中文技术博客，基于 Astro 静态生成。所有页面、文章、RSS 和站点地图统一使用 **https://aicookcode.com**，文章通过 `/articles/` 路由访问。可通过 GitHub 连接 Cloudflare Pages，之后每次推送自动部署。
 
+## 可复现实测
+
+- [Windows i5 纯 CPU 声音克隆实测](https://aicookcode.com/articles/local-voice-cloning/)记录了 Qwen3-TTS 和 ZipVoice 的安装、参考音频克隆、参数调整与换稿对比。可用 [local-tts-lab](https://github.com/aicookcode/local-tts-lab) 复现。
+- [VideoLingo 在 8GB Intel Mac 上的字幕翻译实测](https://aicookcode.com/articles/video-subtitle-ai/)记录了模型与配音配置，以及术语、断句和时间轴的检查方法。
+
 ## 本地运行
 
 环境：Node.js 22.12 或更高版本、npm、Git。项目固定 `.node-version` 为 22，建议使用最新 Node 22 LTS。
@@ -57,6 +62,8 @@ public/_redirects          历史图标地址的 301 跳转
 ```yaml
 ---
 title: "文章标题"
+seoTitle: "可选的搜索标题"
+technical: false
 description: "用一两句话说明文章解决的问题。"
 pubDate: 2026-09-16
 category: "AI 应用"

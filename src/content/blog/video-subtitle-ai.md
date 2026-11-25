@@ -1,6 +1,8 @@
 ---
 visible: true
 title: "VideoLingo 视频字幕翻译：8GB Intel Mac 实践与校对方法"
+seoTitle: "VideoLingo 字幕翻译教程：8GB Intel Mac 安装、配音与校对实测"
+technical: true
 description: "记录在 8GB Intel Mac 上运行 VideoLingo 的流程，说明模型与配音配置，并用短片检查术语、断句、时间轴和导出字幕。"
 pubDate: 2026-07-17T17:00:00+08:00
 updatedDate: 2026-10-27
@@ -20,13 +22,13 @@ VideoLingo 想做的事，就是把这几个人都塞进一条自动流水线里
 
 具体效果可以看我放的另一个视频——[普通人用 AI + Remotion 快速制作专业视频动画](https://mp.weixin.qq.com/s/Lg4n7F4A4NRTY3-C1omIgQ)，字幕切割、翻译和时间轴对齐，基本就是这套流程跑出来的结果。
 
-![VideoLingo 文章配图](/media/video-subtitle-ai/img_01.png)
+![VideoLingo 项目标志及英文标语](/media/video-subtitle-ai/img_01.png)
 
 GitHub 地址：[https://github.com/Huanshere/VideoLingo](https://github.com/Huanshere/VideoLingo)
 
 ## 它不是字幕翻译器，而是 AI 字幕组
 
-![VideoLingo 流程配图](/media/video-subtitle-ai/img_02.jpg)
+![VideoLingo 视频本地化流程图：导入素材、语音识别、字幕切分、翻译和合成](/media/video-subtitle-ai/img_02.jpg)
 
 它的定位不是简单的字幕翻译器，而是一套视频本地化流水线。你可以给它一个 YouTube 链接，让它先下载视频，再识别语音、切分字幕、翻译、生成字幕，最后合成带字幕的视频。也可以直接上传本地视频或音频。
 

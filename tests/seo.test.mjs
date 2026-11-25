@@ -86,6 +86,17 @@ test('curated topic hubs and member articles link to each other in static HTML',
   }
 });
 
+test('technical articles keep their editorial titles and use separate search metadata', () => {
+  const html = page('/articles/local-voice-cloning/');
+  assert.match(html, /<title>Qwen3-TTS 与 ZipVoice 本地部署：Windows i5 纯 CPU 声音克隆实测 · AICookCode<\/title>/);
+  assert.match(html, /<h1>普通笔记本也能本地克隆配音：Qwen3-TTS 与 ZipVoice 实战<\/h1>/);
+  assert.match(html, /"@type":\["BlogPosting","TechArticle"\]/);
+  const sequence = html.match(/<nav class="reading-path"[^>]*>[\s\S]*?<\/nav>/)?.[0] ?? '';
+  assert.match(sequence, /href="\/articles\/ai-talking-avatar\/"/);
+  assert.match(sequence, /href="\/articles\/voice-clone-local-tool\/"/);
+  assert.match(page('/projects/'), /href="https:\/\/github\.com\/aicookcode\/local-tts-lab"/);
+});
+
 test('three editorial tracks preserve category routes and lead to evidence-bearing tutorials', () => {
   for (const path of ['/', '/topics/']) {
     const html = page(path);

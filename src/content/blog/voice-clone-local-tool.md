@@ -20,7 +20,7 @@ VoiceStudio，就是能做这件事的工具而且，它能做的还不止配音
 
 它是一款**免费、开源的电脑软件，自带中文界面**。不注册账号、不订阅会员、没有额度限制，数据保存在你的电脑，Mac、Windows、Linux 都支持安装使用。
 
-![](/media/voice-clone-local-tool/img_01.png)
+![VoiceStudio 中文工作台，显示声音克隆、声音设计、视频配音和转录等功能入口](/media/voice-clone-local-tool/img_01.png)
 
 ## 先说说它跟云端方案的区别
 
@@ -107,11 +107,11 @@ VoiceStudio 主要靠两类模型干活，安装时按需下载就行。
 
 **TTS（Text-to-Speech 文本转语音）**
 
-![](/media/voice-clone-local-tool/img_02.png)
+![VoiceStudio 安装向导的模型下载页，列出必需的语音模型和可选的 Whisper 模型](/media/voice-clone-local-tool/img_02.png)
 
 **ASR（Automatic Speech Recognition 自动识别语音，即语音转文本）**
 
-![](/media/voice-clone-local-tool/img_03.png)
+![VoiceStudio 听写设置页，列出 Whisper Tiny、Parakeet 和 Zipformer 等可下载模型](/media/voice-clone-local-tool/img_03.png)
 
 如果你主要做配音，优先保证 TTS 模型的质量；如果主要用听写和转录，ASR 模型更重要。两个都要，就都下——硬盘够大就行。
 

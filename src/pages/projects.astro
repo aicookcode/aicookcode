@@ -8,4 +8,15 @@ const projects = [
   { name: 'GitHub CLI', repo: 'cli/cli', label: '开发者工具', description: '在终端里管理仓库、Issue 和 Pull Request，把常见的协作操作放进自己的工作流。', language: 'Go', color: 'blue', icon: GitFork, url: 'https://github.com/cli/cli', docs: 'https://cli.github.com/manual/' },
 ];
 ---
-<BaseLayout title="开源项目 · AICookCode" description="值得了解与动手实践的开源项目：Astro、Hono、Pagefind 和 GitHub CLI。"><div class="container archive-page"><header class="page-heading"><span class="eyebrow">THE OPEN SOURCE SHELF</span><h1>好工具，值得一起发现<span class="heading-dot">.</span></h1><p>一份持续整理的开源书架。这里收录的是第三方项目，以及选择它们的理由。</p></header><div class="projects-grid">{projects.map((project) => { const Icon = project.icon; return <article class={`project-card ${project.color}`}><div class="project-top"><span class="topic-icon"><Icon size={27} /></span><span class="project-label">{project.label}</span></div><h2><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}<ArrowUpRight size={20} /></a></h2><span class="repo-name">{project.repo}</span><p>{project.description}</p><div class="project-bottom"><span class="project-language"><span></span>{project.language}</span><a href={project.docs} target="_blank" rel="noopener noreferrer">官方文档<ExternalLink size={14} /></a></div></article>; })}</div><p class="project-footnote">项目归属各自的维护者；收录不代表商业合作或官方推荐。</p></div></BaseLayout>
+<BaseLayout title="开源项目 · AICookCode" description="获取 AICookCode 的 Windows CPU 本地配音工具和实测记录，浏览 Astro、Hono、Pagefind 等第三方项目。"><div class="container archive-page"><header class="page-heading"><span class="eyebrow">THE OPEN SOURCE SHELF</span><h1>好工具，值得一起发现<span class="heading-dot">.</span></h1><p>从可复现的本站实测开始，也可以按需求浏览第三方工具。</p></header>
+  <section class="related-section" aria-labelledby="maintained-projects">
+    <h2 id="maintained-projects">本站维护的项目</h2>
+    <article class="project-card green">
+      <h3><a href="https://github.com/aicookcode/local-tts-lab">local-tts-lab <ArrowUpRight size={17} /></a></h3>
+      <p>在 Windows 上用 CPU 运行 Qwen3-TTS 与 ZipVoice，克隆参考录音并保存音色供后续配音使用。</p>
+      <a class="text-link" href="/articles/local-voice-cloning/">看安装步骤与换稿样音 <ArrowUpRight size={17} /></a>
+    </article>
+  </section>
+  <section aria-labelledby="third-party-projects">
+    <h2 id="third-party-projects">第三方开源项目</h2>
+    <div class="projects-grid">{projects.map((project) => { const Icon = project.icon; return <article class={`project-card ${project.color}`}><div class="project-top"><span class="topic-icon"><Icon size={27} /></span><span class="project-label">{project.label}</span></div><h2><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}<ArrowUpRight size={20} /></a></h2><span class="repo-name">{project.repo}</span><p>{project.description}</p><div class="project-bottom"><span class="project-language"><span></span>{project.language}</span><a href={project.docs} target="_blank" rel="noopener noreferrer">官方文档<ExternalLink size={14} /></a></div></article>; })}</div><p class="project-footnote">项目归属各自的维护者；收录不代表商业合作或官方推荐。</p></section></div></BaseLayout>

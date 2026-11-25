@@ -18,6 +18,7 @@ const recentlyUpdatedPages = new Map([
   ['/topics/ui-assets/', currentEditorialUpdate],
   ['/topics/github/', new Date('2026-10-26T00:00:00.000Z')],
   ['/privacy/', new Date('2026-10-26T00:00:00.000Z')],
+  ['/projects/', new Date('2026-11-21T00:00:00.000Z')],
 ]);
 const categoryPaths = new Map([
   ['AI 应用', '/topics/ai/'],

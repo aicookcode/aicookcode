@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { site } from '../config/site';
 import { learningPaths } from '../config/learning-paths';
+import { focusTopics } from '../config/focus-topics';
 
 export type Post = CollectionEntry<'blog'>;
 export async function getPosts() {
@@ -15,7 +16,7 @@ export const dateLabel = (date: Date) => new Intl.DateTimeFormat('zh-CN', {
 export const readMinutes = (post: Post) => Math.max(1, Math.ceil((post.body?.length ?? 0) / 450));
 
 export function getRelatedPosts(post: Post, posts: Post[], limit = 3) {
-  const pathIds = new Set(learningPaths
+  const pathIds = new Set([...learningPaths, ...focusTopics]
     .filter((path) => path.steps.some((step) => step.id === post.id))
     .flatMap((path) => path.steps.map((step) => step.id)));
   const score = (item: Post) =>

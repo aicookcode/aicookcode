@@ -17,7 +17,9 @@ const related = getRelatedPosts(post, all);
 const guides = focusTopics.filter((topic) => topic.steps.some((step) => step.id === post.id));
 const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
 const schema = {
-  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title,
+  '@context': 'https://schema.org',
+  '@type': post.data.technical ? ['BlogPosting', 'TechArticle'] : 'BlogPosting',
+  headline: post.data.title,
   description: post.data.description, datePublished: post.data.pubDate.toISOString(),
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   image: new URL(post.data.cover, site.url).href,
@@ -42,7 +44,7 @@ const schema = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl(post) },
 };
 ---
-<BaseLayout title={`${post.data.title} · AICookCode`} description={post.data.description} image={post.data.cover} type="article">
+<BaseLayout title={`${post.data.seoTitle ?? post.data.title} · AICookCode`} description={post.data.description} image={post.data.cover} type="article">
   <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')} /><meta property="article:published_time" content={post.data.pubDate.toISOString()} />{post.data.updatedDate && <meta property="article:modified_time" content={post.data.updatedDate.toISOString()} />}</Fragment>
   <div class="reading-progress" aria-hidden="true"></div>
   <a class="article-back-top is-hidden" href="#top" aria-label="回到顶部" title="回到顶部"><ArrowUp size={18} stroke-width={2.25} /></a>
